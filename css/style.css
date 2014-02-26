@@ -7,13 +7,18 @@ body {
 }
 
 div.wrapper {
-	
+
+	border-style: none solid;
+	border-color: #ddd;
+	border-width: 0px 12px;
+	background: #fff;
 	width: 940px;
 	margin: 0 auto;
 	position: relative;
 }
 header {
-	margin-bottom: 15px;
+	width: 100%!important;
+	margin: 0 0 15px 0!important;
 }
 header h1 {
 	text-align: center;
@@ -120,7 +125,7 @@ footer {
 
 
 
-
+/*Comunes css*/
 
 h2 {
 	font-family: 'Times New Roman', 'Georgia', Times, serif;
@@ -138,7 +143,6 @@ h2 {
 	background: #f8f8f8;
 	text-align: right;
 	font-family: Georgia, "Times New Roman", Times, serif;
-	margin-bottom: 40px;
 }
 
 
