@@ -1,36 +1,36 @@
-body, html, div {
+body, html, div, figure {
 	margin: 0px;
 	padding: 0px;
 }
 body {
 	background: url(../images/bg-main.jpg);
+	font-size: 16px;
 }
 
-div.wrapper {
-
-	border-style: none solid;
-	border-color: #ddd;
-	border-width: 0px 12px;
+div#wrapper {
 	background: #fff;
-	width: 940px;
+	max-width: 940px;
 	margin: 0 auto;
 	position: relative;
 }
 header {
+	padding-top: 2em;
+	margin: 0!important;
 	width: 100%!important;
-	margin: 0 0 15px 0!important;
 }
-header h1 {
-	text-align: center;
-	background: url(../images/bg-h1.png) no-repeat center;
-}
+	header h1 {
+		background: url(../images/bg-h1.png) no-repeat center;
+		margin: 0;
+		text-align: center;
+	}
 
 header nav {
 	background: url(../images/bg-nav.jpg) #574d4c;
-	height: 60px;
+	min-height: 60px;
 }
 	header nav ul {
-		padding: 0px 20px;
+		margin: 0;
+		padding: 0em 1.2em;
 		list-style: none;
 	}
 		header nav ul li {
@@ -43,49 +43,34 @@ header nav {
 		}
 			header nav ul li a {
 				display: block;
-				text-decoration: none;
 				color: #fff;
 				font-family: Georgia, "Times New Roman";
-				font-weight: bold;
-				text-transform: uppercase;
 				line-height: 60px;
-
+				font-weight: bold;
+				text-decoration: none;
+				text-transform: uppercase;
 			}
 
-div#search {
-	height: 100px;
+#busqueda {
 	background: url("../images/bg-search.jpg");
-	margin: 20px 0px;
-	padding: 10px;
+	padding: 1.2em;
 }
-	div#search label {
-		color: #fff;
-		font-size: 23px; 
-		display: block;
-		margin-bottom: 10px;
-	}
-	div#search input {
-		display: block;
-	}
-
-div#busqueda {
-	background: url("../images/bg-search.jpg");
-	/*margin: 20px 0px;*/
-	padding: 20px;
-}
-	div#busqueda label {
+	#busqueda label {
 		color: #fff;
 		font-size: 24px; 
 		display: block;
 		margin: 0 0 5px 0;
 	}
-	div#busqueda input {
-		display: block;
-		margin-bottom: 10px;
+	#busqueda input {
+		/*display: block;
+		margin-bottom: 10px;*/
 		width: 100%;
 	}
 
-div#steps img {
+#images_slider {
+	display: none;
+}
+#steps img {
 	width: 100%;
 }
 
@@ -94,6 +79,7 @@ footer {
 	background: url("../images/bg-footer.png") no-repeat top center;
 	padding: 40px 0 20px 0;
 	margin-top: 20px;
+
 }
 	footer ul {
 		margin: 0;
@@ -147,31 +133,65 @@ h2 {
 
 
 input[type="text"] {
-	font-family: Arial, Helvetica, sans-serif;
+	background: url(../images/bg-input.jpg) 0 0 repeat-x #f9f9f9;
+	border: 1px solid #dbdbdb;
 	color: #938d8d;
+	display: block;
+	font-family: Arial, Helvetica, sans-serif;
 	font-size: 20px;
 	height: 20px;
 	padding: 8px 0 8px 8px;
-	width: 200px;
-	background: url(../images/bg-input.jpg) 0 0 repeat-x #f9f9f9;
-	border: 1px solid #dbdbdb;
 	letter-spacing: normal;
-	word-spacing: normal;
 	text-transform: none;
 	text-indent: 0px;
 	text-shadow: none;
-	display: inline-block;
 	text-align: start;
+	width: 200px;
+	word-spacing: normal;
 }
 input[type="submit"] {
-	height: 42px;
+	background: #f4c04a; /*#574d4c;*/
+	border: 0px;
+	color: #000;
 	display: block;
 	font-family: Georgia, "Times New Roman", Times, serif;
 	font-size: 11px;
+	height: 42px;
 	line-height: 14px;
 	padding: 11px 12px 12px 12px;
-	background: #574d4c;
-	color: #ffffff;
 	text-transform: uppercase;
-	border: 0px;
+}
+
+
+
+
+@media screen and (min-width: 520px) {
+	
+	nav {
+		margin: 1em 0;
+	}
+	section {
+		overflow: hidden;
+	}
+	#busqueda {
+		float: left;
+		width: 33%;
+	}
+	#images_slider {
+		display: block;
+		float: left;
+		margin-left: 2%;
+		width: 60%;
+	}
+	#steps figure{
+		display: inline-block;
+	}
+	#steps img {
+		width: 100%;
+	}
+	div#wrapper {
+		border-style: none solid;
+		border-color: #ddd;
+		border-width: 0px 12px;
+	}
 }
