@@ -1,4 +1,50 @@
-body, html, div, figure {
+/*! normalize.css v3.0.0 | MIT License | git.io/normalize */
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}audio:not([controls]){display:none;height:0}[hidden],template{display:none}a{background:transparent}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:bold}dfn{font-style:italic}h1{font-size:2em;margin:.67em 0}mark{background:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-0.5em}sub{bottom:-0.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}pre{overflow:auto}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}button{overflow:visible}button,select{text-transform:none}button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}input{line-height:normal}input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0}input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button{height:auto}input[type="search"]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:.35em .625em .75em}legend{border:0;padding:0}textarea{overflow:auto}optgroup{font-weight:bold}table{border-collapse:collapse;border-spacing:0}td,th{padding:0}
+
+
+@font-face {
+	font-family: 'icomoon';
+	src:url('../fonts/icomoon.eot?-dh7neu');
+	src:url('../fonts/icomoon.eot?#iefix-dh7neu') format('embedded-opentype'),
+		url('../fonts/icomoon.woff?-dh7neu') format('woff'),
+		url('../fonts/icomoon.ttf?-dh7neu') format('truetype'),
+		url('../fonts/icomoon.svg?-dh7neu#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-star-half-full:before {
+	content: "\e600";
+}
+.icon-star-empty:before {
+	content: "\e601";
+}
+.icon-star:before {
+	content: "\e602";
+}
+.icon-rec:before {
+	content: "\e603";
+}
+.icon-food:before {
+	content: "\e604";
+}
+
+
+
+div, figure {
 	margin: 0px;
 	padding: 0px;
 }
@@ -7,14 +53,9 @@ body {
 	font-size: 16px;
 }
 
-div#wrapper {
-	background: #fff;
-	max-width: 940px;
-	margin: 0 auto;
-	position: relative;
-}
+
 header {
-	padding-top: 2em;
+	padding-top: 1em;
 	margin: 0!important;
 	width: 100%!important;
 }
@@ -23,10 +64,13 @@ header {
 		margin: 0;
 		text-align: center;
 	}
+		header h1 img {
+			width: 120px;
+		}
 
 header nav {
 	background: url(../images/bg-nav.jpg) #574d4c;
-	min-height: 60px;
+	/*min-height: 60px;*/
 }
 	header nav ul {
 		margin: 0;
@@ -45,7 +89,7 @@ header nav {
 				display: block;
 				color: #fff;
 				font-family: Georgia, "Times New Roman";
-				line-height: 60px;
+				line-height: 2em;
 				font-weight: bold;
 				text-decoration: none;
 				text-transform: uppercase;
@@ -53,26 +97,92 @@ header nav {
 
 #busqueda {
 	background: url("../images/bg-search.jpg");
-	padding: 1.2em;
+	padding: 1.5em 1.2em;
+	box-sizing: border-box;
 }
-	#busqueda label {
-		color: #fff;
-		font-size: 24px; 
-		display: block;
-		margin: 0 0 5px 0;
-	}
 	#busqueda input {
-		/*display: block;
-		margin-bottom: 10px;*/
 		width: 100%;
 	}
+	#busqueda input[type=text] {
+		margin-bottom: 0.5em;
+	}
+	#busqueda input[type=submit] {
+		margin-top: 1.5em;
+		font-size: 16px;
+	}
+	#busqueda label {
+		color: #fff;
+		font-size: 22px; 
+		display: block;
+		margin-bottom: 5px;
+	}
 
+#featureds article {
+	min-height: 90px;
+	position: relative;
+	margin-bottom:  1em;
+	width: 100%;
+}
+	#featureds article figure {
+		display: block;
+		float: left;
+		height: 100%;
+		overflow: hidden;
+	}
+	#featureds article figure img {
+		height: 90px;
+		width: 90px;
+	}
+	#featureds article h3 {
+		margin: 0;
+		padding: 0;
+	}
+	#featureds article .info {
+		border-left: 1px solid #ccc;
+		height: 100%;
+		padding-left: 0.5em;
+		margin-left: 100px;
+		vertical-align: top;
+	}
+	#featureds article .rating {
+		color: #f4c04a;
+	}
+	
 #images_slider {
 	display: none;
+	font-size: 0pt;
+	position: relative;
 }
 #steps img {
 	width: 100%;
 }
+
+#wrapper {
+	background: #fff;
+	max-width: 940px;
+	position: relative;
+}
+
+
+.controls {
+	background: rgba(0, 0, 0, 0.6);
+	bottom: 0;
+	padding: 0 0.5em;
+	position: absolute;
+	right: 45%;
+}
+	.controls span{
+		color: rgba(255, 255, 255, 1);
+		display: inline-block;
+		font-size: 11px;
+		margin: 0.8em 0.4em;
+	}
+	.controls span:first-child {
+		padding-left: 0.5em;
+	}
+	.controls span:last-child {
+		padding-right: 0.5em;
+	}
 
 
 footer {
@@ -134,29 +244,23 @@ h2 {
 
 input[type="text"] {
 	background: url(../images/bg-input.jpg) 0 0 repeat-x #f9f9f9;
-	border: 1px solid #dbdbdb;
+	border: 0;
 	color: #938d8d;
 	display: block;
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 20px;
-	height: 20px;
-	padding: 8px 0 8px 8px;
-	letter-spacing: normal;
-	text-transform: none;
-	text-indent: 0px;
-	text-shadow: none;
-	text-align: start;
+	font-size: 1.2em;
+	height: 40px;
+	padding: 0;
+	text-indent: 1em;
 	width: 200px;
-	word-spacing: normal;
 }
 input[type="submit"] {
 	background: #f4c04a; /*#574d4c;*/
-	border: 0px;
+	border: 0;
 	color: #000;
 	display: block;
 	font-family: Georgia, "Times New Roman", Times, serif;
 	font-size: 11px;
-	height: 42px;
+	height: 40px;
 	line-height: 14px;
 	padding: 11px 12px 12px 12px;
 	text-transform: uppercase;
@@ -167,6 +271,16 @@ input[type="submit"] {
 
 @media screen and (min-width: 520px) {
 	
+	header {
+		padding-top: 2em;
+	}
+	header h1 img {
+		width: 200px;
+	}
+	header nav ul li a {
+		line-height: 60px;
+	}
+
 	nav {
 		margin: 1em 0;
 	}
@@ -175,13 +289,20 @@ input[type="submit"] {
 	}
 	#busqueda {
 		float: left;
+		margin-left: 1%;
 		width: 33%;
 	}
+	#featureds article {
+		display: inline-block;
+		margin: 0 0 1em 1%; 
+		width: 48%;	
+	}
+
 	#images_slider {
 		display: block;
-		float: left;
-		margin-left: 2%;
-		width: 60%;
+		float: right;
+		margin: 0 1% 0 1%;
+		width: 64%;
 	}
 	#steps figure{
 		display: inline-block;
@@ -189,9 +310,17 @@ input[type="submit"] {
 	#steps img {
 		width: 100%;
 	}
-	div#wrapper {
+	#wrapper {
 		border-style: none solid;
 		border-color: #ddd;
 		border-width: 0px 12px;
+		margin: 0 1em;
 	}
+}
+
+@media screen and (min-width: 1000px) {
+	#wrapper {
+		margin: 0 auto;
+	}
+
 }
