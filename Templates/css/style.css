@@ -20,7 +20,7 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 	font-variant: normal;
 	text-transform: none;
 	line-height: 1;
-
+	
 	/* Better Font Rendering =========== */
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
@@ -43,13 +43,16 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 }
 
 
-
 div, figure {
 	margin: 0px;
 	padding: 0px;
 }
+
+
+
 body {
-	background: url(../images/bg-main.jpg);
+	/*background: url(../images/bg-main.jpg);*/
+	background: #f3f3f3;
 	font-size: 16px;
 }
 
@@ -82,7 +85,7 @@ header nav {
 			padding: 0em 0.6em;
 		}
 		header nav ul li:hover {
-			background: #d63432;
+			background: #c83331; /* #d63432;*/ 
 			
 		}
 			header nav ul li a {
@@ -96,7 +99,7 @@ header nav {
 			}
 
 #busqueda {
-	background: url("../images/bg-search.jpg");
+	background: url("../images/bg-search.jpg") #c83331;
 	padding: 1.5em 1.2em;
 	box-sizing: border-box;
 }
@@ -117,34 +120,40 @@ header nav {
 		margin-bottom: 5px;
 	}
 
-#featureds article {
+article.restaurant {
+	border-bottom: 1px solid #ccc;
+	box-sizing: border-box;
+	font-size: 0.9em;
 	min-height: 90px;
+	padding: 0 0.5em;
 	position: relative;
 	margin-bottom:  1em;
 	width: 100%;
 }
-	#featureds article figure {
+	article.restaurant figure {
 		display: block;
 		float: left;
 		height: 100%;
 		overflow: hidden;
 	}
-	#featureds article figure img {
-		height: 90px;
-		width: 90px;
+	article.restaurant figure img {
+		height: 60px;
+		width: 60px;
 	}
-	#featureds article h3 {
+	article.restaurant h3 {
 		margin: 0;
 		padding: 0;
 	}
-	#featureds article .info {
-		border-left: 1px solid #ccc;
+	article.restaurant h3 a {
+		text-decoration: none;
+	}
+	article.restaurant .info {
 		height: 100%;
 		padding-left: 0.5em;
-		margin-left: 100px;
+		margin-left: 70px;
 		vertical-align: top;
 	}
-	#featureds article .rating {
+	article.restaurant .rating {
 		color: #f4c04a;
 	}
 	
@@ -186,7 +195,7 @@ header nav {
 
 
 footer {
-	background: url("../images/bg-footer.png") no-repeat top center;
+	background: url("../images/bg-line.png") repeat-x top center;
 	padding: 40px 0 20px 0;
 	margin-top: 20px;
 
@@ -223,14 +232,21 @@ footer {
 
 /*Comunes css*/
 
-h2 {
+h1, h2 {
 	font-family: 'Times New Roman', 'Georgia', Times, serif;
 	text-transform: uppercase;
 	font-weight: normal;
 	text-align: center;
 	color: #5d5252;
-	background: url(../images/bg-h1.png) no-repeat center;
+	background: url("../images/bg-line.png") repeat-x center;
 }
+	h1 span, h2 span {
+		background: #fff;
+		padding: 0 1em;
+	}
+	h2 strong {
+		color: #d63332;
+	}
 
 .box {
 	position: relative;
@@ -243,7 +259,7 @@ h2 {
 
 
 input[type="text"] {
-	background: url(../images/bg-input.jpg) 0 0 repeat-x #f9f9f9;
+	background: #f9f9f9;
 	border: 0;
 	color: #938d8d;
 	display: block;
@@ -292,11 +308,23 @@ input[type="submit"] {
 		margin-left: 1%;
 		width: 33%;
 	}
-	#featureds article {
+
+	article.restaurant {
+		border-bottom: 0;
 		display: inline-block;
+		font-size: 1em;
 		margin: 0 0 1em 1%; 
 		width: 48%;	
 	}
+	article.restaurant figure img {
+		height: 90px;
+		width: 90px;
+	}
+	article.restaurant .info {
+		border-left: 1px solid #ccc;
+		margin-left: 100px;
+	}
+
 
 	#images_slider {
 		display: block;
