@@ -119,6 +119,30 @@ header nav {
 		display: block;
 		margin-bottom: 5px;
 	}
+	#busqueda select {
+		background: #f9f9f9 url("../images/select-down.png") no-repeat center right;
+		border: none;
+		border-right: 10px solid #f9f9f9; /*añade pading al bacground*/
+		color: #808080;
+		display: block;
+		font-size: 1.2em;
+		height: 40px;
+		margin-bottom: 0.5em;
+		outline:none;
+		padding: 0;
+		text-indent: 1em;	
+		width: 100%;
+
+		-webkit-appearance:none;
+		appearance:none;
+		-moz-appearance:none;
+		text-overflow:"";
+		-ms-appearance:none;
+		
+	}
+	#busqueda select option {
+		padding: 1em;
+	}
 
 article.restaurant {
 	border-bottom: 1px solid #ccc;
@@ -146,6 +170,9 @@ article.restaurant {
 	}
 	article.restaurant h3 a {
 		text-decoration: none;
+	}
+	article.restaurant p {
+		margin: 0;
 	}
 	article.restaurant .info {
 		height: 100%;
@@ -267,7 +294,6 @@ input[type="text"] {
 	height: 40px;
 	padding: 0;
 	text-indent: 1em;
-	width: 200px;
 }
 input[type="submit"] {
 	background: #f4c04a; /*#574d4c;*/
@@ -311,10 +337,16 @@ input[type="submit"] {
 
 	article.restaurant {
 		border-bottom: 0;
+		box-shadow: 2px 2px 6px #ccc;
 		display: inline-block;
 		font-size: 1em;
-		margin: 0 0 1em 1%; 
-		width: 48%;	
+		margin: 0 0 1.2em 3%; 
+		padding: 0.5em;
+		width: 45%;	
+	}
+	article.restaurant:hover {
+		background: #fefefe;
+		box-shadow: 4px 4px 10px #b9b9b9;
 	}
 	article.restaurant figure img {
 		height: 90px;
