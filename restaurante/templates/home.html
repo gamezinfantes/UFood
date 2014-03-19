@@ -1,26 +1,8 @@
-<!doctype html>
-<html lang="es">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, user-scalable=no">
-	<title>UFood</title>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+{% extends "base.html" %}
+{% load static %}
 
-</head>
-<body>
-	<div id="wrapper">
-		<header >
-			<h1><a href="#"><img src="images/logo.png" alt=""></a></h1>
-			<nav>
-				<ul>
-					<li><a href="#">Inicio</a></li>
-					<li><a href="carta.html">Carta</a></li>
-					<!--<li><a href="#">Ayuda</a></li>
-					<li id="shoping"><a href="#"><span class="icon-food"></span></a></li>-->
-				</ul>
-			</nav>
-		</header>
-		<section>
+{% block content %}
+	<section>
 			<div id="busqueda">
 				<form action="busqueda.html" method="post">
 					<label class="" for="where">¿Tu código postal?</label>
@@ -40,7 +22,7 @@
 				</form>
 			</div>
 			<figure id="images_slider">
-				<img src="images/sushi.jpg" alt="" width="100%" />
+				<img src="{% static "images/hi.jpg" %}" alt="" width="100%" />
 				<div class="controls">
 					<span class="icon-rec"></span>
 					<span class="icon-rec"></span>
@@ -53,9 +35,9 @@
 		<div id="featureds">
 			<h2><span>Descatados</span></h2>
 			<article class="restaurant">
-				<figure><a href=""><img src="http://d30v2pzvrfyzpo.cloudfront.net/es/images/restaurants/4310.gif" alt=""></a></figure>
+				<figure><a href="/resturante/"><img src="http://d30v2pzvrfyzpo.cloudfront.net/es/images/restaurants/4310.gif" alt=""></a></figure>
 				<div class="info">
-					<h3><a href="#">Distillerie Telebebida</a></h3>
+					<h3><a href="/restaurante/">Distillerie Telebebida</a></h3>
 					<div>
 						<p>Comida Japonesa</p>
 						<p>28007</p>
@@ -70,9 +52,9 @@
 				</div>
 			</article>
 			<article class="restaurant">
-				<figure><a href=""><img src="images/restaurant/4193.gif" alt=""></a></figure>
+				<figure><a href="/resturante/"><img src="{% static 'images/restaurant/4193.gif' %}" alt=""></a></figure>
 				<div class="info">
-					<h3><a href="#">L Sushi</a></h3>
+					<h3><a href="/restaurante/">L Sushi</a></h3>
 					<div>
 						<p>Comida Japonesa</p>
 						<p>28007</p>
@@ -87,9 +69,9 @@
 				</div>
 			</article>
 			<article class="restaurant">
-				<figure><a href=""><img src="http://d30v2pzvrfyzpo.cloudfront.net/es/images/restaurants/3482.gif" alt=""></a></figure>
+				<figure><a href="/resturante/"><img src="http://d30v2pzvrfyzpo.cloudfront.net/es/images/restaurants/3482.gif" alt=""></a></figure>
 				<div class="info">
-					<h3><a href="#">Mini Sushi</a></h3>
+					<h3><a href="/restaurante/">Mini Sushi</a></h3>
 					<div>
 						<p>Comida Japonesa</p>
 						<p>28007</p>
@@ -104,9 +86,9 @@
 				</div>
 			</article>
 			<article class="restaurant">
-				<figure><a href=""><img src="http://d30v2pzvrfyzpo.cloudfront.net/es/images/restaurants/4027.gif" alt=""></a></figure>
+				<figure><a href="/resturante/"><img src="http://d30v2pzvrfyzpo.cloudfront.net/es/images/restaurants/4027.gif" alt=""></a></figure>
 				<div class="info">
-					<h3><a href="#">Itacho sushi</a></h3>
+					<h3><a href="/restaurante/">Itacho sushi</a></h3>
 					<div>
 						<p>Comida Japonesa</p>
 						<p>28007</p>
@@ -121,9 +103,9 @@
 				</div>
 			</article>
 			<article class="restaurant">
-				<figure><a href=""><img src="http://d30v2pzvrfyzpo.cloudfront.net/es/images/restaurants/4214.gif" alt=""></a></figure>
+				<figure><a href="/resturante/"><img src="http://d30v2pzvrfyzpo.cloudfront.net/es/images/restaurants/4214.gif" alt=""></a></figure>
 				<div class="info">
-					<h3><a href="#">Japan Pearl Madrid</a></h3>
+					<h3><a href="/restaurante/">Japan Pearl Madrid</a></h3>
 					<div>
 						<p>Comida Japonesa</p>
 						<p>28007</p>
@@ -138,9 +120,9 @@
 				</div>
 			</article>
 			<article class="restaurant">
-				<figure><a href=""><img src="http://d30v2pzvrfyzpo.cloudfront.net/es/images/restaurants/2969.gif" alt=""></a></figure>
+				<figure><a href="/resturante/"><img src="http://d30v2pzvrfyzpo.cloudfront.net/es/images/restaurants/2969.gif" alt=""></a></figure>
 				<div class="info">
-					<h3><a href="#">Twin Pizza Mediterráneo</a></h3>
+					<h3><a href="/restaurante/">Twin Pizza Mediterráneo</a></h3>
 					<div>
 						<p>Comida Japonesa</p>
 						<p>28007</p>
@@ -160,26 +142,11 @@
 			<h2>
 				<span>A <strong>4 pasos</strong> de ti</span>
 			</h2>
-			<figure class="box"><img src="images/step_1_img.png" alt="" /></figure>
-			<figure class="box"><img src="images/step_2_img.png" alt="" /></figure>
-			<figure class="box"><img src="images/step_1_img.png" alt="" /></figure>
-			<figure class="box"><img src="images/step_2_img.png" alt="" /></figure>
+			<figure class="box"><img src="{% static 'images/step_1_img.png' %}" alt="" /></figure>
+			<figure class="box"><img src="{% static 'images/step_2_img.png' %}" alt="" /></figure>
+			<figure class="box"><img src="{% static 'images/step_1_img.png' %}" alt="" /></figure>
+			<figure class="box"><img src="{% static 'images/step_2_img.png' %}" alt="" /></figure>
 			
 			<div class="clear"></div>
 		</div>
-
-		<footer>
-			<ul>
-				<li><a href="#">Inicio</a></li>
-				<li><a href="#">Restaurantes</a></li>
-				<li><a href="#">item</a></li>
-				<li><a href="#">item</a></li>
-				<li><a href="#">Contacto</a></li>
-			</ul>
-			<p id="copyright">UFood ©2014 </p>
-		</footer>
-	
-	</div>
-	
-</body>
-</html>
+{% endblock content %}

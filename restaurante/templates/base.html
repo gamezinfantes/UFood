@@ -1,0 +1,36 @@
+{% load static %}
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no">
+	<title>{% block title %}UFood{% endblock title %}</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+	<div id="wrapper">
+		<header >
+			<h1><a href="#"><img src="{% static 'images/logo.png' %}" alt=""></a></h1>
+			<nav>
+				<ul>
+					<li><a href="/">Inicio</a></li>
+					<li><a href="/carta">Carta</a></li>
+					<!--<li><a href="#">Ayuda</a></li>
+					<li id="shoping"><a href="#"><span class="icon-food"></span></a></li>-->
+				</ul>
+			</nav>
+		</header>
+		{% block content %}{% endblock content %}
+		<footer>
+			<ul>
+				<li><a href="#">Inicio</a></li>
+				<li><a href="#">Restaurantes</a></li>
+				<li><a href="#">item</a></li>
+				<li><a href="#">item</a></li>
+				<li><a href="#">Contacto</a></li>
+			</ul>
+			<p id="copyright">UFood ©2014 </p>
+		</footer>
+	</div>
+</body>
+</html>

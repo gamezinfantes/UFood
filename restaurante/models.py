@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-class Restaurante(models.Model):
+'''class Restaurante(models.Model):
 	nombre = models.CharField(, max_length=50)
 	direccion = models.CharField(, max_length=50)
 	logo = models.ImageField()
@@ -13,3 +13,4 @@ class Restaurante(models.Model):
     def __unicode__(self):
         pass
 
+'''
