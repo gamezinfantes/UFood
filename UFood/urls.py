@@ -8,6 +8,8 @@ urlpatterns = patterns('',
     url(r'^$', 'restaurante.views.home', name='home'),
     url(r'^carta/$', 'restaurante.views.carta', name='carta'),
     url(r'^restaurante/$', 'restaurante.views.restaurante'),
+    url(r'^busqueda/$', 'restaurante.views.busqueda', name='busqueda'),
+
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),

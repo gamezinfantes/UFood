@@ -9,24 +9,28 @@
 </head>
 <body>
 	<div id="wrapper">
-		<header >
+		<header class="select-none">
+			<div class="menu-button"><span class="icon-menu"></span></div>
 			<h1><a href="#"><img src="{% static 'images/logo.png' %}" alt=""></a></h1>
-			<nav>
+			<!--<nav>
 				<ul>
 					<li><a href="/">Inicio</a></li>
 					<li><a href="/carta">Carta</a></li>
 					<!--<li><a href="#">Ayuda</a></li>
-					<li id="shoping"><a href="#"><span class="icon-food"></span></a></li>-->
+					<li id="shoping"><a href="#"><span class="icon-food"></span></a></li>
 				</ul>
-			</nav>
+			</nav>-->
+			<div class="user-button"><span class="icon-user"></span></div>
 		</header>
-		{% block content %}{% endblock content %}
+		<div class="content">
+			{% block content %}{% endblock content %}
+		</div>
 		<footer>
 			<ul>
-				<li><a href="#">Inicio</a></li>
-				<li><a href="#">Restaurantes</a></li>
-				<li><a href="#">item</a></li>
-				<li><a href="#">item</a></li>
+				<li><a href="/">Inicio</a></li>
+				<li><a href="/restaurante/">Restaurante</a></li>
+				<li><a href="/carta/">Carta</a></li>
+				<li><a href="">item</a></li>
 				<li><a href="#">Contacto</a></li>
 			</ul>
 			<p id="copyright">UFood ©2014 </p>

@@ -41,6 +41,13 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 .icon-food:before {
 	content: "\e604";
 }
+.icon-menu:before {
+	content: "\e605";
+}
+.icon-user:before {
+	content: "\e606";
+}
+
 
 /*colores de las estrellas*/
 [class^="icon-star"], [class*=" icon-star"] {
@@ -111,9 +118,14 @@ h1, h2 {
 	}
 
 header {
-	padding-top: 1em;
+	background: url(../images/bg-nav.jpg) #574d4c;
 	margin: 0!important;
+	padding-top: 1em;
+	position: fixed;
+	right: 0;
+	top: 0;
 	width: 100%!important;
+	z-index: 100;
 }
 	header h1 {
 		background: url(../images/bg-h1.png) no-repeat center;
@@ -124,32 +136,46 @@ header {
 			width: 120px;
 		}
 
-header nav {
-	background: url(../images/bg-nav.jpg) #574d4c;
-	/*min-height: 60px;*/
-}
-	header nav ul {
-		margin: 0;
-		padding: 0em 1.2em;
-		list-style: none;
+	header nav {
+		
+		/*min-height: 60px;*/
 	}
-		header nav ul li {
-			display: inline-block;
-			padding: 0em 0.6em;
+		header nav ul {
+			margin: 0;
+			padding: 0em 1.2em;
+			list-style: none;
 		}
-		header nav ul li:hover {
-			background: #c83331; /* #d63432;*/ 
-			
-		}
-			header nav ul li a {
-				display: block;
-				color: #fff;
-				font-family: Georgia, "Times New Roman";
-				line-height: 2em;
-				font-weight: bold;
-				text-decoration: none;
-				text-transform: uppercase;
+			header nav ul li {
+				display: inline-block;
+				padding: 0em 0.6em;
 			}
+			header nav ul li:hover {
+				background: #c83331; /* #d63432;*/ 
+				
+			}
+				header nav ul li a {
+					display: block;
+					color: #fff;
+					font-family: Georgia, "Times New Roman";
+					line-height: 2em;
+					font-weight: bold;
+					text-decoration: none;
+					text-transform: uppercase;
+				}
+	header .menu-button{
+		color: #fff;
+		font-size: 23px;
+		left: 0.8em;
+		position: absolute;
+		top: 0.6em;
+	}
+	header .user-button {
+		color: #fff;
+		font-size: 23px;
+		position: absolute;
+		right: 0.8em;
+		top: 0.6em;
+	}
 
 input[type="text"] {
 	background: #f9f9f9;
@@ -261,6 +287,9 @@ section.restaurant-info .info p{
 /*
  * seccion de la carta del restaurante
  */
+section#menu {
+	overflow: auto; /*evita el colapsamiento de margenes*/
+}
 section#menu h2 {
 	background: none;
 	border-bottom: 2px solid #ce7d7a;
@@ -380,6 +409,10 @@ section#menu li .right{
 	font-family: Georgia, "Times New Roman", Times, serif;
 }
 
+.content {
+	margin-top: 54px;
+}
+
 /*controles de la galeria de imagenes*/
 .controls {
 	background: rgba(0, 0, 0, 0.6);
@@ -400,6 +433,14 @@ section#menu li .right{
 	.controls span:last-child {
 		padding-right: 0.5em;
 	}
+
+
+/*evita la seleccion de texto*/
+.select-none {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+}
 
 
 

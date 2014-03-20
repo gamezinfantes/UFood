@@ -10,5 +10,5 @@ def carta(request):
 def restaurante(request):
 	return render_to_response('restaurante.html', context_instance=RequestContext(request))
 
-
-
+def busqueda(request):
+	return render_to_response('busqueda.html', context_instance=RequestContext(request))
