@@ -1,0 +1,152 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+	<section>
+			<div id="busqueda">
+				<form id="form-seaarch-restaurant" action="/restaurantes/" method="GET">
+					<label class="" for="where">¿Tu código postal?</label>
+					<input type="text" pattern="\d*" maxlength="5" id="where" name="where" placeholder="Ej. 28010" />
+				
+					<label for="what">¿Qué quieres pedir?</label>
+					<select name="" id="">
+						<option value="">Todos los tipos</option>
+						<option value="">Comida japonesa</option>
+						<option value="">Comida india</option>
+						<option value="">Comida italiana</option>
+						<option value="">Comida americana</option>
+						<option value="">Comida china</option>
+					</select>
+				
+					<input type="submit" value="Buscar">
+				</form>
+			</div>
+			<figure id="images_slider">
+				<img src="{% static "images/hi.jpg" %}" alt="" width="100%" />
+				<div class="controls">
+					<span class="icon-rec"></span>
+					<span class="icon-rec"></span>
+					<span class="icon-rec"></span>
+				</div>
+			</figure>
+		</section>
+		
+		
+		<div id="featureds">
+			<h2><span>Descatados</span></h2>
+			<article class="restaurant">
+				<figure><a href="/resturante/"><img src="http://d30v2pzvrfyzpo.cloudfront.net/es/images/restaurants/4310.gif" alt=""></a></figure>
+				<div class="info">
+					<h3><a href="/restaurante/">Distillerie Telebebida</a></h3>
+					<div>
+						<p>Comida Japonesa</p>
+						<p>28007</p>
+					</div>
+					<div class="rating">
+						<span class="icon-star"></span>
+						<span class="icon-star"></span>
+						<span class="icon-star"></span>
+						<span class="icon-star-half-full"></span>
+						<span class="icon-star-empty"></span>
+					</div>
+				</div>
+			</article>
+			<article class="restaurant">
+				<figure><a href="/resturante/"><img src="{% static 'images/restaurant/4193.gif' %}" alt=""></a></figure>
+				<div class="info">
+					<h3><a href="/restaurante/">L Sushi</a></h3>
+					<div>
+						<p>Comida Japonesa</p>
+						<p>28007</p>
+					</div>
+					<div class="rating">
+						<span class="icon-star"></span>
+						<span class="icon-star"></span>
+						<span class="icon-star"></span>
+						<span class="icon-star-half-full"></span>
+						<span class="icon-star-empty"></span>
+					</div>
+				</div>
+			</article>
+			<article class="restaurant">
+				<figure><a href="/resturante/"><img src="http://d30v2pzvrfyzpo.cloudfront.net/es/images/restaurants/3482.gif" alt=""></a></figure>
+				<div class="info">
+					<h3><a href="/restaurante/">Mini Sushi</a></h3>
+					<div>
+						<p>Comida Japonesa</p>
+						<p>28007</p>
+					</div>
+					<div class="rating">
+						<span class="icon-star"></span>
+						<span class="icon-star"></span>
+						<span class="icon-star"></span>
+						<span class="icon-star-half-full"></span>
+						<span class="icon-star-empty"></span>
+					</div>
+				</div>
+			</article>
+			<article class="restaurant">
+				<figure><a href="/resturante/"><img src="http://d30v2pzvrfyzpo.cloudfront.net/es/images/restaurants/4027.gif" alt=""></a></figure>
+				<div class="info">
+					<h3><a href="/restaurante/">Itacho sushi</a></h3>
+					<div>
+						<p>Comida Japonesa</p>
+						<p>28007</p>
+					</div>
+					<div class="rating">
+						<span class="icon-star"></span>
+						<span class="icon-star"></span>
+						<span class="icon-star"></span>
+						<span class="icon-star-half-full"></span>
+						<span class="icon-star-empty"></span>
+					</div>
+				</div>
+			</article>
+			<article class="restaurant">
+				<figure><a href="/resturante/"><img src="http://d30v2pzvrfyzpo.cloudfront.net/es/images/restaurants/4214.gif" alt=""></a></figure>
+				<div class="info">
+					<h3><a href="/restaurante/">Japan Pearl Madrid</a></h3>
+					<div>
+						<p>Comida Japonesa</p>
+						<p>28007</p>
+					</div>
+					<div class="rating">
+						<span class="icon-star"></span>
+						<span class="icon-star"></span>
+						<span class="icon-star"></span>
+						<span class="icon-star-half-full"></span>
+						<span class="icon-star-empty"></span>
+					</div>
+				</div>
+			</article>
+			<article class="restaurant">
+				<figure><a href="/resturante/"><img src="http://d30v2pzvrfyzpo.cloudfront.net/es/images/restaurants/2969.gif" alt=""></a></figure>
+				<div class="info">
+					<h3><a href="/restaurante/">Twin Pizza Mediterráneo</a></h3>
+					<div>
+						<p>Comida Japonesa</p>
+						<p>28007</p>
+					</div>
+					<div class="rating">
+						<span class="icon-star"></span>
+						<span class="icon-star"></span>
+						<span class="icon-star"></span>
+						<span class="icon-star-half-full"></span>
+						<span class="icon-star-empty"></span>
+					</div>
+				</div>
+			</article>
+		</div>
+
+		<div id="steps">
+			<h2>
+				<span>A <strong>4 pasos</strong> de ti</span>
+			</h2>
+			<figure class="box"><img src="{% static 'images/step_1_img.png' %}" alt="" /></figure>
+			<figure class="box"><img src="{% static 'images/step_2_img.png' %}" alt="" /></figure>
+			<figure class="box"><img src="{% static 'images/step_1_img.png' %}" alt="" /></figure>
+			<figure class="box"><img src="{% static 'images/step_2_img.png' %}" alt="" /></figure>
+			
+			<div class="clear"></div>
+		</div>
+{% endblock content %}
