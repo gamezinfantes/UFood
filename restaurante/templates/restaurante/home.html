@@ -6,7 +6,10 @@
 			<div id="busqueda">
 				<form id="form-seaarch-restaurant" action="/restaurantes/" method="GET">
 					<label class="" for="where">¿Tu código postal?</label>
-					<input type="text" pattern="\d*" maxlength="5" id="where" name="where" placeholder="Ej. 28010" />
+					<p class="input-container">
+						<span class="input-icon-right icon-location" id="geolocation"></span>
+						<input type="text" pattern="\d*" maxlength="5" id="where" name="where" placeholder="Ej. 28010" />
+					</p>
 				
 					<label for="what">¿Qué quieres pedir?</label>
 					<select name="" id="">
