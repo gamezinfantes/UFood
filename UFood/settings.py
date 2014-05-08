@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'restaurante',
     'webapp',
     'pedidos',
+    'clientes',
 )
 
 MIDDLEWARE_CLASSES = (

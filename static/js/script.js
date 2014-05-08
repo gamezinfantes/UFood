@@ -1,21 +1,38 @@
 $(function () {
-	
-	//window.scrollTo(0,1);
+
+	var Menu = function () {};
+	Menu.cerrar = function() {
+		$('header nav').removeClass('menu-open');
+		$("html").unbind("click");
+	};
+	Menu.abrir = function () {
+		$('header nav').addClass('menu-open');		
+		$('html').bind('click', function(event) {
+			$('header nav').removeClass('menu-open');		
+		});
+	};
 
 	/**************************************
 	* Eventos botones del menu
 	***************************************/
 	$('.left-button').click(function(event) {
-		$('header nav').toggleClass('menu-open');
+		event.stopPropagation()
+		if ($('header nav').hasClass('menu-open')) {
+			Menu.cerrar();
+		} else {
+			Menu.abrir();	
+		}
 	});
+	//evento que despliega el carrito
 	$('#shoping-cart-btn a').click(function(event) {
 		event.preventDefault();
 		$('#shoping-cart-list').toggleClass('menu-open');
-	});	
+	});
+	
 
 
 	/**************************************
-	*Validacion del codigo postal
+	* Validacion del codigo postal
 	***************************************/
 	$('input#where').keydown(function (e) {  
 	    // Allow: backspace, delete, tab, escape, enter and .
@@ -47,7 +64,7 @@ $(function () {
 	 
 	$('#geolocation').click(geoposicionar);
 
-
+	window.geo= geoposicionar;
 	function geoposicionar(){
 	    if(navigator.geolocation){
 	        //mostrarMensaje("obteniendo posición...");
@@ -93,6 +110,9 @@ $(function () {
 	function mostrarMensaje(str){
 	   alert(str);
 	}
+
+
+	
 	 
 	/*********************************************************
 	* Boton de añadir a la cesta de la carta del restaurante
@@ -105,27 +125,11 @@ $(function () {
 
 		//lo ponemos en la cesta de la pagina
 
-		//lo enviamos para que quede en la sesion del servidor
-		/*$.ajax({
-			url: '/path/to/file',
-			type: 'POST',
-			dataType: 'json',
-			data: {param1: 'value1'},
-		})
-		.done(function() {
-			console.log("success");
-		})
-		.fail(function() {
-			alert('El plato no se pudo añadir');
-			//lo eliminamos de la vista en la cesta y comunnicamos el error
-			
-		})
-		.always(function() {
-			console.log("complete");
-		});
-		*/
+		
 
 	});
+
+
 
 	var ShopingCart = function () {
 		

@@ -14,11 +14,9 @@
 					<label for="what">¿Qué quieres pedir?</label>
 					<select name="" id="">
 						<option value="">Todos los tipos</option>
-						<option value="">Comida japonesa</option>
-						<option value="">Comida india</option>
-						<option value="">Comida italiana</option>
-						<option value="">Comida americana</option>
-						<option value="">Comida china</option>
+						{% for tipo_comida in tipos_comida  %}
+							<option value="">Comida {{tipo_comida.comida}}</option>
+						{% endfor %}
 					</select>
 				
 					<input type="submit" value="Buscar">

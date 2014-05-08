@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section id="login">
+	<h2 class="red-title">Ingresar</h2>
+	<form action="" method="post">
+		{% if form.errors %}
+			{% for field, errors in form.errors.items %}
+	    		{% for error in errors %}
+	    			<p class="error">{{ error }}</p>
+	    		{% endfor %}
+	    	{% endfor %}
+			
+		{% endif %}
+		{% csrf_token %}
+		{{form.username.errors}}
+		<p>
+			<span class="icon-user"></span>
+			{{form.username}}
+		</p>
+		{{form.password.errors}}
+		<p>
+			<span class="icon-key"></span>
+			{{form.password}}
+		</p>
+		<p><input type="submit" value="Ingresar"></p>
+	<div class="social">
+		<a href="#" class="twitter">Twitter</a>
+		<a href="#" class="facebook">Facebook</a>
+	</div>
+</section>
+{% endblock content %}

@@ -19,11 +19,17 @@
 			<h1><a href="#"><img src="{% static 'images/logo.png' %}" alt=""></a></h1>
 			<nav>
 				<ul>
+				{% if user.is_authenticated %}
 					<li><a href="/">Inicio</a></li>
-					<li><a href="/carta">Pedidos</a></li>
-					<li><a href="/carta">Perfil</a></li>
+					<li><a href="#">Pedidos</a></li>
+					<li><a href="#">Perfil</a></li>
 					<li><a href="#">Ayuda</a></li>
-					<li><a href="#">Salir</a></li>
+					<li><a href="/salir/">Salir</a></li>
+				{% else %}
+					<li><a href="/">Inicio</a></li>
+					<li><a href="/ingresar/">Ingresar</a></li>
+					<li><a href="#">Ayuda</a></li>
+				{% endif %}
 				</ul>
 			</nav>
 		</header>
