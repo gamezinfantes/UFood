@@ -1,7 +1,7 @@
 from django.contrib import admin 
-from .models import Forma_pago, Opinion, Pedido
+from .models import Detalle_pedido, Opinion, Pedido
 
-admin.site.register(Forma_pago)
+admin.site.register(Detalle_pedido)
 admin.site.register(Opinion)
 admin.site.register(Pedido)
 

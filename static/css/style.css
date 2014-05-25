@@ -173,7 +173,7 @@ header {
 					text-decoration: none;
 				}
 				header nav ul li a:hover {
-					background: #6B5C5C; /* #d63432;*/ 
+					background: #6B5C5C;
 					
 				}
 				
@@ -306,7 +306,7 @@ section#menu {
 section#menu h2 {
 	margin: 0.5em;
 }
-section#menu ol{
+section#menu ol {
 	list-style:none;
 	margin: 0;
 	padding: 0;
@@ -330,6 +330,11 @@ section#menu li .right{
 	right: 0.5em;
 	top: 0.5em;
 }
+
+
+
+
+
 
 /*
  * seccion de busqueda en la pagina principal
@@ -389,52 +394,62 @@ span#geolocation {
 	font-size: 0pt;
 	position: relative;
 }
-#login h2{
-	margin-left: 6%;
-	width: 80%;
-}
-#login p{
-	margin: 2em auto;
-	position: relative;
-	width: 80%;
-	font-size: 20px;
 
+#login div.social {
+	text-align: center;
 }
-	#login span {
-		color: #938d8d;
-		left: 0.7em;
-		position: absolute;
-		top: 0.5em;
+	#login div.social a {
+		margin-left: .5em;
 	}
-	#login input {
-		border: 1px solid #bbb;
-		box-sizing: border-box;
-		padding-left: 1em;
-		width: 100%;
-	}
-	#login div.social {
-		text-align: center;
-	}
-		#login div.social a {
-			margin-left: .5em;
-		}
+#modal {
+	background: rgba(0,0,0,0.7);
+	bottom: 100%;
+	left: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
 
+#paypal-btn{
+	background: url('../images/btn_pponly_142x27.png');
+	background-size: 100%;
+	width: 142px;
+	height: 27px;
+	font-size: 0px;
+}
 #shoping-cart {
+	bottom: 10%;
+	background: #fff;
 	display: block;
+	left: 10%;
+	/*padding-top: 45px;*/
 	position: fixed;
-	right: 0px;
-	top: 0px;
-	z-index: 110;
+	right: 10%;
+	top: 15%;
+	z-index: 50;
+	-webkit-transform: translate3d(0,-110%,0);
+	transition: -webkit-transform 0.5s;
+}
+#shoping-cart.visible {
+	transition: -webkit-transform 0.5s;
+	-webkit-transform: translate3d(0,0%,0);
+
 }
 #shoping-cart-btn {
 	display: block;
+	position: fixed;
+	-webkit-transform: translate3d(0,0%,0);
 	text-align: right;
+	z-index: 110;
+	top: 0;
+	right: 0;
 }
 #shoping-cart-btn a {
 	background: #f4c04a;
 	color: #4e4e4e;
 	display: inline-block;
-	height: 45px;
+	height: 44px;
+	line-height: 45px;
 	padding: 0 0.5em;
 	text-decoration: none;
 	width: 5em;
@@ -446,11 +461,9 @@ span#geolocation {
 }
 #shoping-cart-list {
 	background: #f4c04a;
-	display: none;
 	list-style: none;
 	padding:  0;
 	margin: 0;
-	width: 200px;
 }
 #shoping-cart-list li{
 	padding:0.5em 1em;
@@ -490,7 +503,7 @@ span#geolocation {
 }
 
 .content {
-	margin-top: 45px;
+	padding-top: 45px;
 	overflow: auto; /*evita el colapsamiento de margenes*/
 }
 
@@ -515,6 +528,41 @@ span#geolocation {
 		padding-right: 0.5em;
 	}
 
+
+.creationForm h2{
+	margin-left: 6%;
+	width: 80%;
+}
+.creationForm p{
+	font-size: 16px;
+	margin: 1em auto;
+	position: relative;
+	width: 80%;
+
+}
+.creationForm.with-icon p{
+	margin: 2em auto;
+	font-size: 20px;
+	
+}
+	.creationForm input {
+		border: 1px solid #bbb;
+		box-sizing: border-box;
+		width: 100%;
+	}
+
+	.creationForm.with-icon span {
+		color: #938d8d;
+		left: 0.7em;
+		position: absolute;
+		top: 0.5em;
+	}
+	.creationForm.with-icon input {
+		padding-left: 1em;
+	}
+
+
+
 .facebook {
 	background: #3b5998;
 	color: #fff;
@@ -524,6 +572,10 @@ span#geolocation {
 	text-decoration: none;	
 }
 
+.il-in-lab input, .il-in-lab label {
+	display: inline-block;
+	width: initial;
+}
 
 .input-container {
 	position: relative;
@@ -538,6 +590,14 @@ span#geolocation {
 
 .menu-open {
 	display: block!important;
+}
+.message-successful{
+	border: #26b75d solid 1px;
+	border-bottom-width: 5px;
+	border-radius: 3px;
+	background: #e8f7ed;
+	color: #3d464d;
+	padding: 0.5em 1em;
 }
 
 .red-title {

@@ -36,11 +36,13 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'paypalrestsdk',
     'south',
     'restaurante',
     'webapp',
     'pedidos',
     'clientes',
+    'carton',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -70,7 +72,7 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-es'
 
 TIME_ZONE = 'UTC'
 
@@ -90,3 +92,13 @@ STATICFILES_DIRS = (
 	os.path.join(BASE_DIR,'static'),
 )
 
+# Sesion para carton
+CART_SESSION_KEY = 'carrito_plato'
+CART_TEMPLATE_TAG_NAME = 'get_cart'
+CART_PRODUCT_MODEL = 'restaurante.models.Plato'
+
+
+# Paypal options cris_gi_06@hotmail.com
+PAYPAL_MODE = 'sandbox' # sandbox or live
+PAYPAL_CLIENT_ID = 'AbkTjhCnFh4dWIWrxv3mpKt0aZIxTbI_oGqamD1EdMIcUlEVm6tAahVaWrWB'
+PAYPAL_CLIENT_SECRET = 'EMk7fRBie9jvNI2ra4SlHvS85qCz7oZNLof0PpqJeq4oHEnNUFyc2ffrqqiq'

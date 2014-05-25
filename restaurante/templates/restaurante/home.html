@@ -12,10 +12,10 @@
 					</p>
 				
 					<label for="what">¿Qué quieres pedir?</label>
-					<select name="" id="">
-						<option value="">Todos los tipos</option>
+					<select id="what">
+						<option value="0">Todos los tipos</option>
 						{% for tipo_comida in tipos_comida  %}
-							<option value="">Comida {{tipo_comida.comida}}</option>
+							<option value="{{tipo_comida.slug}}">Comida {{tipo_comida.comida}}</option>
 						{% endfor %}
 					</select>
 				

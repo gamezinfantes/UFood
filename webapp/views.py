@@ -15,3 +15,12 @@ def busqueda(request):
 	
 def login(request):
 	return render_to_response('webapp/login.html', context_instance=RequestContext(request))
+
+def pago_exitoso(request):
+	return render_to_response('webapp/pago_exitoso.html', context_instance=RequestContext(request))
+
+def registrar(request):
+	return render_to_response('webapp/registrar.html', context_instance=RequestContext(request))
+
+def detalles_pedido(request):
+	return render_to_response('webapp/detalles_pedido.html', context_instance=RequestContext(request))

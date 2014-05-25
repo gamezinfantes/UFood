@@ -26,7 +26,7 @@ $(function () {
 	//evento que despliega el carrito
 	$('#shoping-cart-btn a').click(function(event) {
 		event.preventDefault();
-		$('#shoping-cart-list').toggleClass('menu-open');
+		$('#shoping-cart').toggleClass('visible');
 	});
 	
 
@@ -49,11 +49,21 @@ $(function () {
             e.preventDefault();
         }
 	});
+
+
 	//Formulario de la busqueda del home
 	$('#form-seaarch-restaurant').submit(function(event) {
 		event.preventDefault();
 		var codigo_postal = $('#where').val();
-		window.location.href = "/restaurantes/"+codigo_postal+"/";
+		var tipoComida = $('#what').val();
+		var url = "/restaurantes/"+codigo_postal+"/";
+		if (tipoComida != 0) {
+			url += tipoComida+"/";
+		}
+
+		window.location.href = url;
+
+
 	});
 
 
@@ -117,16 +127,18 @@ $(function () {
 	/*********************************************************
 	* Boton de añadir a la cesta de la carta del restaurante
 	*********************************************************/
-	$('.add').click(function(event) {
+	$('.add').click(function() {
 		var plato = $(this).data('plato');
-		
+		var precio = $('span.add').parent().children('.price');
+
+		var carrito = new ShopingCart();
+		carrito.add_single(plato);
+		//var precio = $(this).prev().prev().text();
+
 		//var nombrePlato = 
 		//var precioPlato =
 
 		//lo ponemos en la cesta de la pagina
-
-		
-
 	});
 
 
@@ -135,11 +147,16 @@ $(function () {
 		
 	};
 	ShopingCart.prototype.save = function(url, jsonOb) {
-		$.get('/shoping-cart/'+url+"/", jsonOb);
+		$.get('/shoping-cart/'+url+"/?"+$.param(jsonOb), function(data){
+			$('#shoping-cart-list').html(data);
+		});
 	};
 
 	ShopingCart.prototype.add = function(productId, cantidad) {
 		this.save("add", {"product_id": productId, "quantity": cantidad});
+	};
+	ShopingCart.prototype.add_single = function(productId) {
+		this.save("add-single", {"product_id": productId});
 	};
 	ShopingCart.prototype.remove = function (productId) {
 		this.save("remove", {"product_id": productId});
@@ -153,5 +170,12 @@ $(function () {
 	ShopingCart.prototype.set_quantity = function (productId, cantidad) {
 		this.save("set-quantity", {"product_id": productId, "quantity": cantidad});
 	};
+
+
+
+
+	$('#shoping-cart-list').on('click', 'li', function(){
+		console.log('hemos hecho click')
+	});
 
 });

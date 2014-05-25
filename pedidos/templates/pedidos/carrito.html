@@ -1,0 +1,7 @@
+
+<!--inulidoooooo-->
+{% for item in cart.items %}
+<li class="shoping-cart-border">
+	{{item.quantity}} x <span class="plato">{{ item.product.nombre }}</span> <span id="price">{{ item.subtotal }}</span>
+</li>
+{% endfor %}

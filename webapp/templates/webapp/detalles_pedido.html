@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}Detalles del pedido{% endblock title %}
+{% block content %}
+	<h2 class="red-title">Datos de entrega</h2>
+	
+
+
+	<h2 class="red-title">Resumen del pedido</h2>
+	<ol>
+		<li>
+			<h3>2xTallarines con setas</h3>
+			<div class="right">
+				<span class="price">4.50</span><span class="currency">&euro;</span>
+			</div>
+		</li>
+	</ol>
+	<input type="submit" value="Efectivo">
+	<input type="submit" value="Paypal" id="paypal-btn">
+	<style type="text/css">
+
+h2 {
+	margin: 0.5em;
+}
+ol {
+	list-style:none;
+	margin: 0;
+	padding: 0;
+}
+li{
+	padding: 0.5em 4em 0.5em 1.4em;
+	position: relative;
+}
+li h3{
+	font-size: 1em;
+	font-weight: normal;
+	margin: 0;
+}
+li .desc {
+	display: none;
+	font-size: 0.8em;
+}
+li .right{
+	font-size: 0.8em;
+	position: absolute;
+	right: 0.5em;
+	top: 0.5em;
+}
+
+
+	</style>
+
+{% endblock content %}

@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section id="register" class="creationForm">
+	<h2 class="red-title">Registrar</h2>
+	<form method="post">
+		{% if form.errors %}
+			{% for field, errors in form.errors.items %}
+	    		{% for error in errors %}
+	    			<p class="error">{{ error }}</p>
+	    		{% endfor %}
+	    	{% endfor %}
+			
+		{% endif %}
+		{% csrf_token %}
+		<p>
+			<label for="">Usuario</label>
+			<input type="text">
+		</p>
+		<p>
+			<label for="">Contraseña</label>
+			<input type="password">
+		</p>
+		<p>
+			<label for="">Repetir contraseña</label>
+			<input type="password">
+		</p>
+		<p>
+			<label for="">Correo electronico</label>
+			<input type="email">
+		</p>
+		<p>
+			<label for="">Nombre</label>
+			<input type="text">
+		</p>
+		<p>
+			<label for="">Apellidos</label>
+			<input type="text">
+		</p>
+		<p>
+			<label for="">Direccion</label>
+			<input type="text">
+		</p>
+		<p>
+			<label for="">Codigo Postal</label>
+			<input type="text">
+		</p>
+		<p>
+			<label for="">Telefono</label>
+			<input type="text">
+		</p>
+		<p class="il-in-lab">
+			<input type="checkbox" name="" id="">
+			<label for="">Acepto los <a href="#">terminos y condiciones</a></label>
+		</p>
+
+
+
+
+
+		<p><input type="submit" value="Registrar"></p>
+</section>
+{% endblock content %}
