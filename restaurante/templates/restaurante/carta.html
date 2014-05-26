@@ -4,13 +4,15 @@
 {% block content %}
 
 	<div id="shoping-cart-btn">
-		<a href="#" class="shoping-cart-border"><span class="icon-food"></span> {{cart.count}} plato{{cart.count|pluralize}}</a>
+		<a href="#" class="shoping-cart-border">
+			<span class="icon-food"></span> <span id="total-items">{{cart.count}}</span><span>plato{{cart.count|pluralize}}</span>
+		</a>
 	</div>
 	<div id="shoping-cart">
 		<ul id="shoping-cart-list">
 			{% include "pedidos/carrito.html" %}
 		</ul>
-		<a href="#">Realizar pedido</a>
+		<a href="/detalles-pedido/">Realizar pedido</a>
 	</div>
 	
 	<section id="menu">

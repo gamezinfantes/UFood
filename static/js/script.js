@@ -27,6 +27,7 @@ $(function () {
 	$('#shoping-cart-btn a').click(function(event) {
 		event.preventDefault();
 		$('#shoping-cart').toggleClass('visible');
+		$('#modal').toggleClass('visible');
 	});
 	
 
@@ -55,6 +56,10 @@ $(function () {
 	$('#form-seaarch-restaurant').submit(function(event) {
 		event.preventDefault();
 		var codigo_postal = $('#where').val();
+		if (codigo_postal>53000 || codigo_postal<1000) {
+			alert("Codigo postal erroneo");
+			return false;
+		}
 		var tipoComida = $('#what').val();
 		var url = "/restaurantes/"+codigo_postal+"/";
 		if (tipoComida != 0) {
@@ -128,29 +133,17 @@ $(function () {
 	* Boton de añadir a la cesta de la carta del restaurante
 	*********************************************************/
 	
-	var carrito = new ShopingCart();
-	$('.add').click(function() {
-		var plato = $(this).data('plato');
-		//var precio = $('span.add').parent().children('.price');
-
-		carrito.add_single(plato);
-
-		//var nombrePlato = 
-		//var precioPlato =
-
-		//lo ponemos en la cesta de la pagina
-	});
 
 
 
 	var ShopingCart = function () {
-		this.articulos = 0;
-		var cantidadBarra;
+		this.cantidadBarra = $('#total-items');
+		this.articulos = this.cantidadBarra.html();
 	};
 	ShopingCart.prototype.save = function(url, jsonOb) {
+		this.cantidadBarra.html(this.articulos);
 		$.get('/shoping-cart/'+url+"/?"+$.param(jsonOb), function(data){
 			//cantidad en la barra menu
-			cantidadBarra.html(this.articulos);
 			//Datos del carrito
 			$('#shoping-cart-list').html(data);
 		});
@@ -180,6 +173,18 @@ $(function () {
 	};
 
 
+	window.carrito = new ShopingCart();
+	$('.add').click(function() {
+		var plato = $(this).data('plato');
+		//var precio = $('span.add').parent().children('.price');
+
+		carrito.add_single(plato);
+
+		//var nombrePlato = 
+		//var precioPlato =
+
+		//lo ponemos en la cesta de la pagina
+	});
 
 
 	$('#shoping-cart-list').on('click', 'li', function(){

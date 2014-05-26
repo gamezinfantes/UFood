@@ -50,6 +50,25 @@ def set_queantity(request):
 	pass
 
 
+def pago(request):
+	if request.method == "POST":
+
+
+
+		# Falta guardar el pedido
+		
+
+		# vaciar carrito
+
+		if request.POST.get('pago') == "Paypal":
+			return paypal_create(request)
+		elif request.POST.get('pago') == "Efectivo":
+			return HttpResponseRedirect(reverse('webapp.views.pago_exitoso'))
+
+	return HttpResponseRedirect(reverse('webapp.views.pago_exitoso'))
+
+
+	
 
 
 def paypal_create(request):
@@ -119,8 +138,8 @@ def paypal_create(request):
 	 	print("Error while creating payment:")
 	 	print(payment.error)
 
-def paypal_execute(request):
 
+def paypal_execute(request):
     payment_id = request.session['payment_id']
     payer_id = request.GET['PayerID']
 
