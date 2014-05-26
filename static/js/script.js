@@ -157,6 +157,7 @@ $(function () {
 	};
 
 	ShopingCart.prototype.add = function(productId, cantidad) {
+		this.articulos += cantidad;
 		this.save("add", {"product_id": productId, "quantity": cantidad});
 	};
 	ShopingCart.prototype.add_single = function(productId) {
@@ -167,9 +168,11 @@ $(function () {
 		this.save("remove", {"product_id": productId});
 	};
 	ShopingCart.prototype.remove_single = function (productId) {
+		this.cantidad--;
 		this.save("remove-single", {"product_id": productId});
 	}
 	ShopingCart.prototype.clear = function () {
+		this.cantidad = 0;
 		this.save("clear",{});
 	};
 	ShopingCart.prototype.set_quantity = function (productId, cantidad) {
