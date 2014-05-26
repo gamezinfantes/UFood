@@ -127,12 +127,12 @@ $(function () {
 	/*********************************************************
 	* Boton de añadir a la cesta de la carta del restaurante
 	*********************************************************/
-	var cantidadBarra;
+	
+	var carrito = new ShopingCart();
 	$('.add').click(function() {
 		var plato = $(this).data('plato');
 		//var precio = $('span.add').parent().children('.price');
 
-		var carrito = new ShopingCart();
 		carrito.add_single(plato);
 
 		//var nombrePlato = 
@@ -144,14 +144,15 @@ $(function () {
 
 
 	var ShopingCart = function () {
-		
+		this.articulos = 0;
+		var cantidadBarra;
 	};
 	ShopingCart.prototype.save = function(url, jsonOb) {
 		$.get('/shoping-cart/'+url+"/?"+$.param(jsonOb), function(data){
 			//cantidad en la barra menu
-			cantidadBarra.html(data.cantidad_barra);
+			cantidadBarra.html(this.articulos);
 			//Datos del carrito
-			$('#shoping-cart-list').html(data);//data.lista
+			$('#shoping-cart-list').html(data);
 		});
 	};
 
@@ -159,6 +160,7 @@ $(function () {
 		this.save("add", {"product_id": productId, "quantity": cantidad});
 	};
 	ShopingCart.prototype.add_single = function(productId) {
+		this.articulos++;
 		this.save("add-single", {"product_id": productId});
 	};
 	ShopingCart.prototype.remove = function (productId) {
