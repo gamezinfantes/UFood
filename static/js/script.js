@@ -127,13 +127,13 @@ $(function () {
 	/*********************************************************
 	* Boton de añadir a la cesta de la carta del restaurante
 	*********************************************************/
+	var cantidadBarra;
 	$('.add').click(function() {
 		var plato = $(this).data('plato');
-		var precio = $('span.add').parent().children('.price');
+		//var precio = $('span.add').parent().children('.price');
 
 		var carrito = new ShopingCart();
 		carrito.add_single(plato);
-		//var precio = $(this).prev().prev().text();
 
 		//var nombrePlato = 
 		//var precioPlato =
@@ -148,7 +148,10 @@ $(function () {
 	};
 	ShopingCart.prototype.save = function(url, jsonOb) {
 		$.get('/shoping-cart/'+url+"/?"+$.param(jsonOb), function(data){
-			$('#shoping-cart-list').html(data);
+			//cantidad en la barra menu
+			cantidadBarra.html(data.cantidad_barra);
+			//Datos del carrito
+			$('#shoping-cart-list').html(data);//data.lista
 		});
 	};
 
