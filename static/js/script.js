@@ -188,8 +188,12 @@ $(function () {
 
 		//lo ponemos en la cesta de la pagina
 	});
-
-
+	
+	// Mostrar descripcion cuando hay click
+	$('#menu on').on('click', 'li', function () {
+		$('.desc', this).toggleClass('');
+	});
+	
 	$('#shoping-cart-list').on('click', 'li', function(){
 		console.log('hemos hecho click')
 	});
