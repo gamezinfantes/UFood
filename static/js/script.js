@@ -138,10 +138,13 @@ $(function () {
 
 	var ShopingCart = function () {
 		this.cantidadBarra = $('#total-items');
+		this.platos = $('#platos');
 		this.articulos = this.cantidadBarra.html();
 	};
 	ShopingCart.prototype.save = function(url, jsonOb) {
-		this.cantidadBarra.html(this.articulos);
+		this.cantidadBarra.text(this.articulos);
+		var plural = this.cantidadBarra != 1 ? "platos" : "plato";
+		this.platos.text(plural);
 		$.get('/shoping-cart/'+url+"/?"+$.param(jsonOb), function(data){
 			//cantidad en la barra menu
 			//Datos del carrito
