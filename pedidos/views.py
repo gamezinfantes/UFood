@@ -53,12 +53,27 @@ def set_queantity(request):
 def pago(request):
 	if request.method == "POST":
 
-
-
-		# Falta guardar el pedido
+		#
+		#	Guardo el pedido
+		# ===========================
+		'''
+		cart = Cart(request.session)
+		# creo un pedido con los datos del cliente y el restaurante
+		restaurante = cart.items[0].restaurante
+		cliente = request.user #falta el cliente
+		pedido = Pedido (restaurante=restaurante, cliente=cliente)
+		pedido.save()
 		
-
-		# vaciar carrito
+		#añado platos al pedido
+		for item in cart.items:
+			plato = item.product
+			Detalle_pedido(plato=plato, pedido=pedido, cantidad=item.quantity).save()
+		
+		
+		# Se vacía el carrito
+		#cart.clear() Se vaciará despues porque lo usa para coger los platos del pedido
+		
+		'''
 
 		if request.POST.get('pago') == "Paypal":
 			return paypal_create(request)
