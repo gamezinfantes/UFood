@@ -482,6 +482,9 @@ span#geolocation {
 	border-bottom: 0px;
 }
 
+#steps {
+	display: none;
+}
 #steps img {
 	width: 100%;
 }
@@ -726,6 +729,9 @@ span#geolocation {
 		float: right;
 		margin: 0 1% 0 1%;
 		width: 64%;
+	}
+	#steps {
+		display: block;
 	}
 	#steps figure{
 		display: inline-block;
