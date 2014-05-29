@@ -1,5 +1,7 @@
+from .models import Detalle_pedido, Pedido
 import paypalrestsdk
 from carton.cart import Cart
+from clientes.models import Cliente
 from django.contrib import messages
 from django.core.urlresolvers import reverse
 from django.shortcuts import render
@@ -53,7 +55,7 @@ def set_queantity(request):
 def pago(request):
 	if request.method == "POST":
 
-		'''
+		
 
 		#
 		#	Guardo el pedido
@@ -61,19 +63,19 @@ def pago(request):
 		
 		cart = Cart(request.session)
 		# creo un pedido con los datos del cliente y el restaurante
-		restaurante = cart.items[0].restaurante
+		restaurante =cart.items[0].product.restaurante
 		cliente = Cliente.objects.get(user=request.user) #falta el cliente
 		pedido = Pedido (restaurante=restaurante, cliente=cliente)
 		pedido.save()
 		
-		#añado platos al pedido
+		#aado platos al pedido
 		for item in cart.items:
 			plato = item.product
 			Detalle_pedido(plato=plato, pedido=pedido, cantidad=item.quantity).save()
 		
 		
-		#cart.clear() Se vaciará despues porque lo usa para coger los platos del pedido
-		'''
+		#cart.clear() Se vaciara despues porque lo usa para coger los platos del pedido
+		
 
 
 		if request.POST.get('pago') == "Paypal":

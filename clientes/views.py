@@ -30,17 +30,10 @@ class IngresarFormView(FormView):
             return self.form_invalid(form)
     
     def get_success_url(self):
-        if self.success_url:
-            redirect_to = self.success_url
-        else:
-            redirect_to = self.request.REQUEST.get(self.redirect_field_name, '')
-
-        netloc = urlparse.urlparse(redirect_to)[1]
-        if not redirect_to:
-            redirect_to = settings.LOGIN_REDIRECT_URL
-        elif netloc and netloc != self.request.get_host():
-            redirect_to = settings.LOGIN_REDIRECT_URL
-        return redirect_to
+        redirect_to = self.request.session.get('success_url', None)
+        if redirect_to is not None:
+            return redirect_to
+        return success_url
       
     def post(self, request, *args, **kwargs):
         form_class = self.get_form_class()
@@ -50,3 +43,8 @@ class IngresarFormView(FormView):
         else:                
             return self.form_invalid(form)
 
+    def get(self, request, *args, **kwargs):
+        suc = self.request.META.get('HTTP_REFERER', "")
+        request.session['success_url'] = suc
+        return super(IngresarFormView, self).get(request, *args, **kwargs)
+         
