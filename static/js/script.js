@@ -137,8 +137,8 @@ $(function () {
 
 
 	var ShopingCart = function () {
-		this.cantidadBarra = $('#total-items');
-		this.platos = $('#platos');
+		this.cantidadBarra = $('#shoping-cart-btn #total-items');
+		this.platos = $('#shoping-cart-btn #platos');
 		this.articulos = this.cantidadBarra.html();
 	};
 	ShopingCart.prototype.save = function(url, jsonOb) {
