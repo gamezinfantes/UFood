@@ -11,7 +11,9 @@ urlpatterns = patterns('',
 
     url(r'^pago/exito/$', 'webapp.views.pago_exitoso', name='pago_exitoso'),
     url(r'^registrar/$', 'webapp.views.registrar', name='registrar'),
-    url(r'^detalles-pedido/$', 'webapp.views.detalles_pedido', name='detalles_pedido'),
+    #url(r'^detalles-pedido/$', 'webapp.views.detalles_pedido', name='detalles_pedido'),
+    
+    url(r'^detalles-pedido/$', 'pedidos.views.detalles_pedido', name='detalles_pedido'),
    
 
     url(r'^$', HomeListView.as_view(), name='home'),

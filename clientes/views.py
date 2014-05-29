@@ -44,6 +44,8 @@ class IngresarFormView(FormView):
             return self.form_invalid(form)
 
     def get(self, request, *args, **kwargs):
+        if request.user.is_authenticated():
+            return HttpResponseRedirect(self.success_url)
         suc = self.request.META.get('HTTP_REFERER', "")
         request.session['success_url'] = suc
         return super(IngresarFormView, self).get(request, *args, **kwargs)

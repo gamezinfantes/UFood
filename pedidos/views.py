@@ -3,10 +3,12 @@ import paypalrestsdk
 from carton.cart import Cart
 from clientes.models import Cliente
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
-from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render, render_to_response
 from restaurante.models import Plato, Restaurante
+from django.template import RequestContext
 from UFood.settings import PAYPAL_MODE, PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET
 
 
@@ -55,8 +57,6 @@ def set_queantity(request):
 def pago(request):
 	if request.method == "POST":
 
-		
-
 		#
 		#	Guardo el pedido
 		# ===========================
@@ -76,7 +76,7 @@ def pago(request):
 		
 		#cart.clear() Se vaciara despues porque lo usa para coger los platos del pedido
 		
-
+		
 
 		if request.POST.get('pago') == "Paypal":
 			return paypal_create(request)
@@ -184,67 +184,12 @@ def paypal_execute(request):
 
 
 
-
-
-
-
-
-
-
-def paypal_create2(request):
-
-	paypalrestsdk.configure({
-		"mode": PAYPAL_MODE,
-		"client_id": PAYPAL_CLIENT_ID,
-		"client_secret": PAYPAL_CLIENT_SECRET })
-	# ###Payment
-	# A Payment Resource; create one using
-	# the above types and intent as 'sale'
-	payment = paypalrestsdk.Payment({
-	  "intent":  "sale",
-
-	  # ###Payer
-	  # A resource representing a Payer that funds a payment
-	  # Payment Method as 'paypal'
-	  "payer":  {
-	    "payment_method":  "paypal" },
-
-	  # ###Redirect URLs
-	  "redirect_urls": {
-	    "return_url": "http://localhost:3000/payment/execute",
-	    "cancel_url": "http://localhost:3000/" },
-
-	  # ###Transaction
-	  # A transaction defines the contract of a
-	  # payment - what is the payment for and who
-	  # is fulfilling it.
-	  "transactions":  [ {
-
-	    # ### ItemList
-	    "item_list": {
-	      "items": [{
-	        "name": "item",
-	        "sku": "item",
-	        "price": "5.00",
-	        "currency": "USD",
-	        "quantity": 1 }]},
-
-	    # ###Amount
-	    # Let's you specify a payment amount.
-	    "amount":  {
-	      "total":  "5.00",
-	      "currency":  "USD" },
-	    "description":  "This is the payment transaction description." } ] } )
-
-	# Create Payment and return status
-	if payment.create():
-	  print("Payment[%s] created successfully"%(payment.id))
-	  # Redirect the user to given approval url
-	  for link in payment.links:
-	    if link.method == "REDIRECT":
-	      redirect_url = link.href
-	      print("Redirect for approval: %s"%(redirect_url))
-	      return HttpResponseRedirect(redirect_url)
-	else:
-	  print("Error while creating payment:")
-	  print(payment.error)
+@login_required
+def detalles_pedido(request):
+	cart = Cart(request.session)
+	platos = []
+	for item in cart.items:
+		 platos.append(item.product)
+	cliente = Cliente.objects.get(user=request.user)
+	pedido = {'cliente': cliente, 'items': cart.items, 'total': cart.total}
+	return render_to_response('pedidos/detalles_pedido.html', pedido, context_instance=RequestContext(request))

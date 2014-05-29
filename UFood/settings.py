@@ -92,6 +92,10 @@ STATICFILES_DIRS = (
 	os.path.join(BASE_DIR,'static'),
 )
 
+
+LOGIN_URL = '/ingresar/'
+
+
 # Sesion para carton
 CART_SESSION_KEY = 'carrito_plato'
 CART_TEMPLATE_TAG_NAME = 'get_cart'
