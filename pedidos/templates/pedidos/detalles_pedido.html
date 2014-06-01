@@ -17,14 +17,14 @@
 		<li>
 			<h3>{{item.quantity}}x{{item.product.nombre}}</h3>
 			<div class="right">
-				<span class="price">{{item.subtotal}}</span><span class="currency">&euro;</span>
+				<span class="price">{{item.subtotal|floatformat:2}}</span><span class="currency">&euro;</span>
 			</div>
 		</li>
 	{% endfor %}
 		<li>
 			<h3>TOTAL</h3>
 			<div class="right">
-				<span class="price">{{total}}</span><span class="currency">&euro;</span>
+				<span class="price">{{total|floatformat:2}}</span><span class="currency">&euro;</span>
 			</div>
 		</li>
 	</ol>

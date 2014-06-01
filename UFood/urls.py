@@ -11,7 +11,7 @@ urlpatterns = patterns('',
 
     url(r'^pago/exito/$', 'webapp.views.pago_exitoso', name='pago_exitoso'),
     url(r'^registrar/$', 'webapp.views.registrar', name='registrar'),
-    #url(r'^detalles-pedido/$', 'webapp.views.detalles_pedido', name='detalles_pedido'),
+    url(r'^opinar/$', 'webapp.views.opinion', name='opinion'),
     
     url(r'^detalles-pedido/$', 'pedidos.views.detalles_pedido', name='detalles_pedido'),
    
@@ -34,5 +34,6 @@ urlpatterns = patterns('',
     url(r'^paypal/execute/$', 'pedidos.views.paypal_execute'),
     
     url(r'^shoping-cart/add-single/$', 'pedidos.views.add_single', name='add_single'),
+    url(r'^shoping-cart/remove-single/$', 'pedidos.views.remove_single', name='remove_single'),
     url(r'^pago/$', 'pedidos.views.pago', name='pago'),
 )

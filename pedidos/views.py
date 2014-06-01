@@ -10,8 +10,7 @@ from django.shortcuts import render, render_to_response
 from restaurante.models import Plato, Restaurante
 from django.template import RequestContext
 from UFood.settings import PAYPAL_MODE, PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET
-
-
+from django.conf import settings
 
 
 # Create your views here.
@@ -43,7 +42,9 @@ def remove(request):
 
 def remove_single(request):
 	cart = Cart(request.session)
-	pass
+	plato = Plato.objects.get(id=request.GET.get('product_id'))
+	cart.remove_single(plato)
+	return platilla_cesta(request);
 
 def clear(request):
 	cart = Cart(request.session)
@@ -54,6 +55,7 @@ def set_queantity(request):
 	pass
 
 
+@login_required
 def pago(request):
 	if request.method == "POST":
 
@@ -88,7 +90,7 @@ def pago(request):
 
 	
 
-
+@login_required
 def paypal_create(request):
 	cart = Cart(request.session)
 
@@ -157,6 +159,7 @@ def paypal_create(request):
 	 	print(payment.error)
 
 
+@login_required()
 def paypal_execute(request):
     payment_id = request.session['payment_id']
     payer_id = request.GET['PayerID']
@@ -184,7 +187,8 @@ def paypal_execute(request):
 
 
 
-@login_required
+
+@login_required(redirect_field_name='/detalles-pedido/')
 def detalles_pedido(request):
 	cart = Cart(request.session)
 	platos = []

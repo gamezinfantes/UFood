@@ -23,7 +23,7 @@
 		{% for plato in seccion.list %}
 			<li>
 				<h3>{{plato.nombre}}</h3>
-				<div class="desc">Trozos de pollo tikka en salsa de nata,tomate y mantequilla</div>
+				<div class="desc">{{plato.descripcion}}</div>
 				<div class="right">
 					<span class="price">{{plato.precio}}</span><span class="currency">&euro; </span>
 					<span class="add select-none" data-plato="{{plato.id}}">+</span>
@@ -32,17 +32,4 @@
 		{% endfor %}
 		</ol>
 	{% endfor %}
-		<h2 class="red-title" class="red-title">Entrantes</h2>
-		<ol>
-			<li>
-				<span class="number"></span>
-				<h3>Murgh Makhani</h3>
-				<div class="desc">Trozos de pollo tikka en salsa de nata,tomate y mantequilla</div>
-				<div class="right">
-					<span class="price">9,95</span><span class="currency">&euro; </span>
-					<span class="add select-none" data-plato="190">+</span>
-				</div>
-			</li>
-		</ol>
-	</section>
 {% endblock content %}

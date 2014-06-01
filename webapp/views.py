@@ -24,3 +24,6 @@ def registrar(request):
 
 def detalles_pedido(request):
 	return render_to_response('webapp/detalles_pedido.html', context_instance=RequestContext(request))
+
+def opinion (request):
+	return render_to_response('webapp/opinion.html', context_instance=RequestContext(request))

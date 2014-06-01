@@ -94,6 +94,7 @@ STATICFILES_DIRS = (
 
 
 LOGIN_URL = '/ingresar/'
+REDIRECT_FIELD_NAME = '/tralari/'
 
 
 # Sesion para carton

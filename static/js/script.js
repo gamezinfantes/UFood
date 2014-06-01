@@ -139,11 +139,11 @@ $(function () {
 	var ShopingCart = function () {
 		this.cantidadBarra = $('#shoping-cart-btn #total-items');
 		this.platos = $('#shoping-cart-btn #platos');
-		this.articulos = this.cantidadBarra.html();
+		this.articulos = this.cantidadBarra.text();
 	};
 	ShopingCart.prototype.save = function(url, jsonOb) {
 		this.cantidadBarra.text(this.articulos);
-		var plural = this.cantidadBarra != 1 ? "platos" : "plato";
+		var plural = this.cantidadBarra.text() != 1 ? "platos" : "plato";
 		this.platos.text(plural);
 		$.get('/shoping-cart/'+url+"/?"+$.param(jsonOb), function(data){
 			//cantidad en la barra menu
@@ -164,11 +164,11 @@ $(function () {
 		this.save("remove", {"product_id": productId});
 	};
 	ShopingCart.prototype.remove_single = function (productId) {
-		this.cantidad--;
+		this.articulos--;
 		this.save("remove-single", {"product_id": productId});
 	}
 	ShopingCart.prototype.clear = function () {
-		this.cantidad = 0;
+		this.articulos = 0;
 		this.save("clear",{});
 	};
 	ShopingCart.prototype.set_quantity = function (productId, cantidad) {
@@ -177,25 +177,23 @@ $(function () {
 
 
 	window.carrito = new ShopingCart();
-	$('.add').click(function() {
-		var plato = $(this).data('plato');
+	$('.add').click(function(event) {
+		event.stopPropagation();
+		var platoId = $(this).data('plato');
 		//var precio = $('span.add').parent().children('.price');
+		carrito.add_single(platoId);
 
-		carrito.add_single(plato);
-
-		//var nombrePlato = 
-		//var precioPlato =
-
-		//lo ponemos en la cesta de la pagina
 	});
 	
 	// Mostrar descripcion cuando hay click
-	$('#menu on').on('click', 'li', function () {
-		$('.desc', this).toggleClass('');
+	$('#menu').on('click', 'li', function () {
+		$('.desc', this).toggleClass('visible');
 	});
 	
-	$('#shoping-cart-list').on('click', 'li', function(){
-		console.log('hemos hecho click')
+	$('#shoping-cart-list').on('click', '.remove', function(){
+		event.stopPropagation();
+		var platoId = $(this).data('plato');
+		carrito.remove_single(platoId);
 	});
 
 });

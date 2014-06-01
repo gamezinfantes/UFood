@@ -1,7 +1,6 @@
-
-<!--inulidoooooo-->
 {% for item in cart.items %}
 <li class="shoping-cart-border">
-	{{item.quantity}} x <span class="plato">{{ item.product.nombre }}</span> <span id="price">{{ item.subtotal }}</span>
+	<span class="remove" data-plato="{{item.product.id}}"></span>{{item.quantity}} x <span class="plato">{{ item.product.nombre }}</span>
+	<span id="price">{{ item.subtotal|floatformat:2 }}</span><span class="currency">&euro;</span>
 </li>
 {% endfor %}
