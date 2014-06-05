@@ -195,5 +195,15 @@ $(function () {
 		var platoId = $(this).data('plato');
 		carrito.remove_single(platoId);
 	});
+	
+	function mobile() {}
+	function mobileExit() {}
+	function desktop () {}
+	function desktopExit() {}
+	
+	$(window).on('enterBreakpoint450', mobile);
+	$(window).on('exitBreakpoint450', mobileExit;
+	$(window).on('enterBreakpoint1000', desktop);
+	$(window).on('exitBreakpoint1000', desktopExit);
 
 });
