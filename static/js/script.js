@@ -176,7 +176,7 @@ $(function () {
 	};
 
 
-	window.carrito = new ShopingCart();
+	var carrito = new ShopingCart();
 	$('.add').click(function(event) {
 		event.stopPropagation();
 		var platoId = $(this).data('plato');
@@ -185,10 +185,6 @@ $(function () {
 
 	});
 	
-	// Mostrar descripcion cuando hay click
-	$('#menu').on('click', 'li', function () {
-		$('.desc', this).toggleClass('visible');
-	});
 	
 	$('#shoping-cart-list').on('click', '.remove', function(){
 		event.stopPropagation();
@@ -196,8 +192,21 @@ $(function () {
 		carrito.remove_single(platoId);
 	});
 	
-	function mobile() {}
-	function mobileExit() {}
+	
+	
+	
+	
+	
+	function mobile() {
+		// Mostrar descripcion cuando hay click
+		$('#menu').on('click', 'li', function () {
+			$('.desc', this).toggleClass('visible');
+		});
+	
+	}
+	function mobileExit() {
+		$('#menu').off('click', 'li', nombrefuncion);
+	}
 	function desktop () {}
 	function desktopExit() {}
 	
