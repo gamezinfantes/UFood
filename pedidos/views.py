@@ -1,7 +1,9 @@
-from .models import Detalle_pedido, Pedido
+from .forms import OpinionForm
+from .models import Detalle_pedido, Opinion, Pedido
 import paypalrestsdk
 from carton.cart import Cart
 from clientes.models import Cliente
+from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
@@ -10,7 +12,7 @@ from django.shortcuts import render, render_to_response
 from restaurante.models import Plato, Restaurante
 from django.template import RequestContext
 from UFood.settings import PAYPAL_MODE, PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET
-from django.conf import settings
+from django.views.generic.edit import CreateView
 
 
 # Create your views here.
@@ -58,34 +60,31 @@ def set_queantity(request):
 @login_required
 def pago(request):
 	if request.method == "POST":
-
-		#
-		#	Guardo el pedido
-		# ===========================
-		
 		cart = Cart(request.session)
-		# creo un pedido con los datos del cliente y el restaurante
-		restaurante =cart.items[0].product.restaurante
-		cliente = Cliente.objects.get(user=request.user) #falta el cliente
-		pedido = Pedido (restaurante=restaurante, cliente=cliente)
-		pedido.save()
-		
-		#aado platos al pedido
-		for item in cart.items:
-			plato = item.product
-			Detalle_pedido(plato=plato, pedido=pedido, cantidad=item.quantity).save()
-		
-		
-		#cart.clear() Se vaciara despues porque lo usa para coger los platos del pedido
-		
-		
+		if not cart.is_empty:
+			#
+			#	Guardo el pedido
+			# ===========================
+			
+			# creo un pedido con los datos del cliente y el restaurante
+			restaurante =cart.items[0].product.restaurante
+			cliente = Cliente.objects.get(user=request.user) #falta el cliente
+			pedido = Pedido (restaurante=restaurante, cliente=cliente)
+			pedido.save()
+			
+			#aado platos al pedido
+			for item in cart.items:
+				plato = item.product
+				Detalle_pedido(plato=plato, pedido=pedido, cantidad=item.quantity).save()
+						
+			
 
-		if request.POST.get('pago') == "Paypal":
-			return paypal_create(request)
-		elif request.POST.get('pago') == "Efectivo":
-			return HttpResponseRedirect(reverse('webapp.views.pago_exitoso'))
+			if request.POST.get('pago') == "Paypal":
+				return paypal_create(request)
+			elif request.POST.get('pago') == "Efectivo":
+				cart.clear() #Se vacia el carrito
+				return HttpResponseRedirect(reverse('pago_exitoso'))
 
-	return HttpResponseRedirect(reverse('webapp.views.pago_exitoso'))
 
 
 	
@@ -125,8 +124,9 @@ def paypal_create(request):
 
 	  # ###Redirect URLs
 	  "redirect_urls": {
-	    "return_url": request.build_absolute_uri(reverse('pedidos.views.paypal_execute')),
-	    "cancel_url": "http://localhost:3000/" },
+	    "return_url": request.build_absolute_uri(reverse('paypal_execute')),
+	    "cancel_url": request.build_absolute_uri(reverse('detalles_pedido'))
+	   },
 
 	  # ###Transaction
 	  # A transaction defines the contract of a
@@ -174,13 +174,14 @@ def paypal_execute(request):
 
     if payment.execute({"payer_id": payer_id}):
         # the payment has been accepted
+        Cart(request.session).clear()
         print("Payment[%s] execute successfully"%(payment.id))
-    	return HttpResponseRedirect(reverse('webapp.views.pago_exitoso'))
+    	return HttpResponseRedirect(reverse('pago_exitoso'))
     else:
         # the payment is not valid
         print(payment.error)
 
-    return HttpResponseRedirect(reverse('webapp.views.carta'))
+    return HttpResponseRedirect(reverse('home'))
 
 
 
@@ -197,3 +198,29 @@ def detalles_pedido(request):
 	cliente = Cliente.objects.get(user=request.user)
 	pedido = {'cliente': cliente, 'items': cart.items, 'total': cart.total}
 	return render_to_response('pedidos/detalles_pedido.html', pedido, context_instance=RequestContext(request))
+
+
+
+
+class OpinionCreateView(CreateView):
+    model = Opinion
+    context_object_name = "opinion"
+    template_name = "pedidos/opinion.html"
+    success_url = '/'
+    form_class = OpinionForm
+
+    def post(self, request, *args, **kwargs):
+    	self.object = None
+    	form_class = self.get_form_class()
+    	form = self.get_form(form_class)
+    	if form.is_valid():
+    		print form.cleaned_data['valoracion']
+    		return self.form_valid(form)
+    	else:
+    		return self.form_invalid(form)
+
+    def form_valid(self, form):
+        opinion = self.object = form.save(commit=False)
+        opinion.pedido = Pedido.objects.get(id=self.kwargs['id_pedido'])
+        opinion.save()
+        return HttpResponseRedirect(self.get_success_url())

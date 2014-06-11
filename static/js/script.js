@@ -23,14 +23,17 @@ $(function () {
 			Menu.abrir();	
 		}
 	});
-	//evento que despliega el carrito
-	$('#shoping-cart-btn a').click(function(event) {
-		event.preventDefault();
-		$('#shoping-cart').toggleClass('visible');
-		$('#modal').toggleClass('visible');
-	});
 	
 
+	/**
+	 *  Click del boton de paypal
+	 */
+
+	 $('form#detaill .paypal-btn').click(function(event) {
+	 	$('form#detaill').append('<input type="hidden" name="pago" value="Paypal" /> '); 
+	 	$('form#detaill').submit();
+	 	
+	 });
 
 	/**************************************
 	* Validacion del codigo postal
@@ -194,24 +197,128 @@ $(function () {
 	
 	
 	
-	
-	
-	
+	var ToggleMenuDescription = function () {
+		$('.desc', this).toggleClass('visible');
+	};
+
+	var mostarCarrito = function(event) {
+		event.preventDefault();
+		$('#shoping-cart').toggleClass('visible');
+		$('#modal').toggleClass('visible');
+	};
+
+
 	function mobile() {
-		// Mostrar descripcion cuando hay click
-		$('#menu').on('click', 'li', function () {
-			$('.desc', this).toggleClass('visible');
-		});
+		// Mostrar descripcion del plato cuando hay click
+		$('#menu').on('click', 'li', ToggleMenuDescription);
+
+		//evento que despliega el carrito
+		$('#shoping-cart-btn a').click(mostarCarrito);
+	
 	
 	}
 	function mobileExit() {
-		$('#menu').off('click', 'li', nombrefuncion);
+		$('#menu').off('click', 'li', ToggleMenuDescription);
+
+		var modal = $('#modal');
+		if(modal.hasClass('visible')) {
+			$('#shoping-cart-btn a').click();
+		}
+		$('#shoping-cart-btn a').off('click', mostarCarrito);
 	}
-	function desktop () {}
-	function desktopExit() {}
-	
-	$(window).on('enterBreakpoint450', mobile);
-	$(window).on('exitBreakpoint450', mobileExit;
+	function desktop () {
+		if ($("section#menu").length > 0){
+			var spConOffTop = $('#shoping-cart-content').offset().top;
+			var $spCon = $('#shoping-cart-content');
+			$(window).scroll( function(event) {
+				console.log('erer');
+				var winH = $(window).scrollTop();
+				if (winH >spConOffTop) {
+					$spCon.css({
+						position: 'fixed',
+						top: '1em',
+						right: $(window).width() - $spCon.offset().left - $spCon.outerWidth()
+					});
+				}else {
+					$spCon.css({
+						position: 'absolute',
+						right: 0,
+						top: 6
+					});
+				}
+			});
+
+			$(window).resize(function(event) {
+				if ($spCon.css('position') == 'fixed') {
+					$spCon.css({
+						right: $(window).width() - ($('.content').offset().left + $('.content').width())
+					});
+				}
+			});
+		}
+
+
+
+		var PreetySlide = function () {
+			var self = this;
+			this.posicion = 1;
+
+			var $image = $('#images_slider img');
+
+			this.avanza = function () {
+				var posCambio = this.posicion;
+				if (this.posicion == 3) {
+					posCambio = 1;
+				} else {
+					posCambio++;
+				}
+				self.cambiarImagen(posCambio);
+				if (this.posicion == 3) {
+					this.posicion = 1;
+				} else {
+					this.posicion++;
+				}
+				//console.log(this.posicion);
+			};
+			this.cambiarImagen = function (posCambio){
+				var newSrc = $image.attr("src").replace("slide"+this.posicion+".jpg", "slide"+posCambio+".jpg");
+				$image.attr("src", newSrc);
+			};
+
+
+			$('.controls #1').click(function(event) {
+			 	self.cambiarImagen(1);
+			 	self.posicion = 1;
+			});
+
+			$('.controls #2').click(function(event) {
+			 	self.cambiarImagen(2);
+			 	self.posicion = 2;
+			});
+			$('.controls #3').click(function(event) {
+			 	self.cambiarImagen(3);
+			 	self.posicion = 3;
+			});
+			
+			setInterval(function () {
+				self.avanza();
+			} , 10000);
+		};
+		new PreetySlide();
+
+	}
+	function desktopExit() {
+		$(window).off('resize');
+		$(window).off('scroll');
+	}
+
+
+	var _breakpoints = {
+		"breakpoints": [20,1000]
+	};
+	$(window).setBreakpoints(_breakpoints);
+	$(window).on('enterBreakpoint20', mobile);
+	$(window).on('exitBreakpoint20', mobileExit);
 	$(window).on('enterBreakpoint1000', desktop);
 	$(window).on('exitBreakpoint1000', desktopExit);
 

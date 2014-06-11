@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section id="login" class="creationForm">
+	<h2 class="red-title">Opinion</h2>
+	<form action="" method="post">
+		{% if form.errors %}
+			{% for field, errors in form.errors.items %}
+	    		{% for error in errors %}
+	    			<p class="error">{{ error }}</p>
+	    		{% endfor %}
+	    	{% endfor %}
+			
+		{% endif %}
+		{% csrf_token %}
+
+
+		<p class="rating">
+			<input name="puntuacion" type="radio" class="star" value="1" />
+			<input name="puntuacion" type="radio" class="star" value="2" />
+			<input name="puntuacion" type="radio" class="star" value="3" />
+			<input name="puntuacion" type="radio" class="star" value="4" />
+			<input name="puntuacion" type="radio" class="star" value="5" /> 
+			<strong>Bueno</strong>
+		</p>
+		<p>
+			<textarea name="valoracion" id="id_valoracion"></textarea>
+		</p>
+		<p><input type="submit" value="Opinar"></p>
+		{{form.pedido}}
+</section>
+{% endblock content %}

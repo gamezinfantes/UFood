@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section id="register" class="creationForm">
+	<h2 class="red-title">Registrar</h2>
+	<form method="post">
+		{% csrf_token %}
+		{{form.as_p}}
+		{{cliente_form.as_p}}
+		<p class="il-in-lab">
+			<input type="checkbox" name="" id="">
+			<label for="">Acepto los <a href="#">terminos y condiciones</a></label>
+		</p>
+
+		<p><input type="submit" value="Registrar"></p>
+</section>
+{% endblock content %}

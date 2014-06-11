@@ -4,3 +4,7 @@
 	<span id="price">{{ item.subtotal|floatformat:2 }}</span><span class="currency">&euro;</span>
 </li>
 {% endfor %}
+<li class="shoping-cart-border">
+	TOTAL
+	<span id="price">{{ cart.total|floatformat:2 }}</span><span class="currency">&euro;</span>
+</li>

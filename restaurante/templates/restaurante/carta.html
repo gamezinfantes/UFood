@@ -2,17 +2,19 @@
 
 {% block title %}Carta{% endblock title %}
 {% block content %}
-
-	<div id="shoping-cart-btn">
-		<a href="#" class="shoping-cart-border">
-			<span class="icon-food"></span> <span id="total-items">{{cart.count}}</span><span id="platos">plato{{cart.count|pluralize}}</span>
-		</a>
-	</div>
-	<div id="shoping-cart">
-		<ul id="shoping-cart-list">
-			{% include "pedidos/carrito.html" %}
-		</ul>
-		<a href="/detalles-pedido/">Realizar pedido</a>
+	<div id="shoping-cart-content">
+		<div id="shoping-cart-btn">
+			<a href="#" class="shoping-cart-border">
+				<span class="icon-food"></span> <span id="total-items">{{cart.count}}</span><span id="platos">plato{{cart.count|pluralize}}</span>
+			</a>
+		</div>
+		<div id="shoping-cart">
+			<ul id="shoping-cart-list">
+				{% include "pedidos/carrito.html" %}
+			</ul>
+			<a href="/detalles-pedido/">Realizar pedido</a>
+		</div>
+		
 	</div>
 	
 	<section id="menu">
@@ -25,7 +27,7 @@
 				<h3>{{plato.nombre}}</h3>
 				<div class="desc">{{plato.descripcion}}</div>
 				<div class="right">
-					<span class="price">{{plato.precio}}</span><span class="currency">&euro; </span>
+					<span class="price">{{plato.precio |floatformat:2 }}</span><span class="currency">&euro; </span>
 					<span class="add select-none" data-plato="{{plato.id}}">+</span>
 				</div>
 			</li> 

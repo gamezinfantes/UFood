@@ -5,10 +5,13 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no">
 	<title>{% block title %}UFood{% endblock title %}</title>
+	<link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" />
 	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+ 	<link href="{% static 'css/jquery.rating.css' %}" type="text/css" rel="stylesheet"/>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<script src="{% static 'js/jquery.rating.js' %}" type="text/javascript" language="javascript"></script>
- 	<link href="{% static 'css/jquery.rating.css' %}" type="text/css" rel="stylesheet"/>
+	<script src="{% static 'js/breakpoints.js' %}" type="text/javascript" language="javascript"></script>
+
 	<script src="{% static 'js/script.js' %}"></script>
 </head>
 <body>

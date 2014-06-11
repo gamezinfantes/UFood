@@ -28,31 +28,21 @@
 			</div>
 		</li>
 	</ol>
-	<form action="/pago/" method="POST">
+	<form action="/pago/" method="POST" id="detaill">
 		{% csrf_token %}
 		<div class="paiment-metods">
 			<input type="submit" value="Efectivo" name="pago">
-			<input type="submit" value="Paypal" id="paypal-btn" name="pago">
-		</div>
+			<div class="paypal-btn"><!--<input type="submit" value="Paypal" name="pago" style="visibility: hiodden;">--></div>
 	</form>
 	
 </section>
+
 	<style type="text/css">
 		#det-pedido {
 			padding: 0 1.5em;
 		}
 		p {
 			font-size: 16px!important;
-		}
-
-		.paiment-metods {
-			margin-top: 2em;
-			text-align: center;
-		}
-		.paiment-metods input{
-			display: inline-block;
-			margin: 0 2%;
-			width: 45%!important;
 		}
 
 		ol {

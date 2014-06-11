@@ -1,6 +1,11 @@
 from django.db import models
 from django.template.defaultfilters import slugify
 
+
+
+
+from pedidos.models import Opinion
+
 # Create your models here.
 class Tipo_comida(models.Model):
 	comida = models.CharField(max_length=50)
@@ -41,10 +46,9 @@ class Restaurante(models.Model):
 	logo = models.ImageField(upload_to='logos')
 	tipo_comida = models.ForeignKey(Tipo_comida)
  	forma_pago = models.ForeignKey(Forma_pago)
- 	#forma_pago = models.ManyToManyField(Forma_pago)
 	slug = models.SlugField(max_length=50, unique=True)
-	#pedido minimo, y precio pedido
-	
+	#pedido_minimo = models.DecimalField(max_digits=5, decimal_places=2)
+
 	def save(self, *args, **kwargs):
 		self.slug = slugify(self.nombre)
 		super(Restaurante, self).save(*args, **kwargs)
@@ -56,7 +60,17 @@ class Restaurante(models.Model):
 		verbose_name = u'Restaurante'
 		verbose_name_plural = u'Restaurantes'
 
-
+	def _valoracion(self):
+		opiniones = Opinion.objects.filter(pedido__restaurante__id = self.id)
+		acu = 0
+		cont = 0
+		if len(opiniones) > 0:
+			for opinion in opiniones:
+				acu = acu + opinion.puntuacion
+				cont = cont + 1 
+		return acu/float(cont)
+	
+	valoracion = property(_valoracion)
 
 class Zona_reparto(models.Model):
 	codigo_postal = models.SmallIntegerField()
