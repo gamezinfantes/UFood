@@ -105,5 +105,5 @@ CART_PRODUCT_MODEL = 'restaurante.models.Plato'
 
 # Paypal options cris_gi_06@hotmail.com
 PAYPAL_MODE = 'sandbox' # sandbox or live
-PAYPAL_CLIENT_ID = 'AbkTjhCnFh4dWIWrxv3mpKt0aZIxTbI_oGqamD1EdMIcUlEVm6tAahVaWrWB'
-PAYPAL_CLIENT_SECRET = 'EMk7fRBie9jvNI2ra4SlHvS85qCz7oZNLof0PpqJeq4oHEnNUFyc2ffrqqiq'
+PAYPAL_CLIENT_ID = 'AZyHuBCADbHGZ_ZKkB7gQvnaQx3L_O0IP7g5UC6UZskirh01huaj-DazzvHo'
+PAYPAL_CLIENT_SECRET = 'EJslvBD7zxMBLZHwWwCtsJeEq3MzJGfQyiixS1EFbkXyxjpD0_8e79ikjXEv'

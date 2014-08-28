@@ -3,23 +3,27 @@
 
 {% block content %}
 	<h2><span>restaurantes</span></h2>
-	{% for restaurante in restaurantes %}
-		<article class="restaurant">
-			<figure><a href="/restaurante/{{restaurante.slug}}"><img src="http://d30v2pzvrfyzpo.cloudfront.net/es/images/restaurants/4310.gif" alt=""></a></figure>
-			<div class="info">
-				<h3><a href="/restaurante/{{restaurante.slug}}/carta/">{{restaurante.nombre}}</a></h3>
-				<div>
-					<p>Comida {{restaurante.tipo_comida.comida}}</p>
-					<p>{{restaurante.codigo_postal}}</p>
+	{% if restaurantes %}
+		{% for restaurante in restaurantes %}
+			<article class="restaurant">
+				<figure><a href="/restaurante/{{restaurante.slug}}"><img src="http://d30v2pzvrfyzpo.cloudfront.net/es/images/restaurants/4310.gif" alt=""></a></figure>
+				<div class="info">
+					<h3><a href="/restaurante/{{restaurante.slug}}/carta/">{{restaurante.nombre}}</a></h3>
+					<div>
+						<p>Comida {{restaurante.tipo_comida.comida}}</p>
+						<p>{{restaurante.codigo_postal}}</p>
+					</div>
+					<div class="rating">
+						<span class="icon-star"></span>
+						<span class="icon-star"></span>
+						<span class="icon-star"></span>
+						<span class="icon-star-half-full"></span>
+						<span class="icon-star-empty"></span>
+					</div>
 				</div>
-				<div class="rating">
-					<span class="icon-star"></span>
-					<span class="icon-star"></span>
-					<span class="icon-star"></span>
-					<span class="icon-star-half-full"></span>
-					<span class="icon-star-empty"></span>
-				</div>
-			</div>
-		</article>
-	{% endfor %}
+			</article>
+		{% endfor %}
+	{% else %}
+		<p style="text-align:center">No hay restaurantes en la zona</p>
+	{% endif %}
 {% endblock content %}

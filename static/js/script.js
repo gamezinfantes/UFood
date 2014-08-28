@@ -39,7 +39,7 @@ $(function () {
 	* Validacion del codigo postal
 	***************************************/
 	$('input#where').keydown(function (e) {  
-	    // Allow: backspace, delete, tab, escape, enter and .
+	    // Permite el retoriceso, la tecla del, tablulacion y enter
         if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
              // Allow: Ctrl+A
             (e.keyCode == 65 && e.ctrlKey === true) || 
@@ -48,7 +48,7 @@ $(function () {
                  // let it happen, don't do anything
                  return;
         }
-        // Ensure that it is a number and stop the keypress
+        // Se asegura de que es un numero y corta el evento
         if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
             e.preventDefault();
         }
@@ -91,7 +91,7 @@ $(function () {
 	        mostrarMensaje('Tu navegador no soporta geolocalización');
 	    }   
 	}
-	 
+	
 
 	function errorPosicionar(error) {
 	    switch(error.code)  
@@ -178,8 +178,9 @@ $(function () {
 		this.save("set-quantity", {"product_id": productId, "quantity": cantidad});
 	};
 
-
 	var carrito = new ShopingCart();
+
+
 	$('.add').click(function(event) {
 		event.stopPropagation();
 		var platoId = $(this).data('plato');
@@ -258,7 +259,6 @@ $(function () {
 		}
 
 
-
 		var PreetySlide = function () {
 			var self = this;
 			this.posicion = 1;
@@ -304,7 +304,9 @@ $(function () {
 				self.avanza();
 			} , 10000);
 		};
-		new PreetySlide();
+		if ($("#images_slider").length > 0){
+			new PreetySlide();
+		}	
 
 	}
 	function desktopExit() {
